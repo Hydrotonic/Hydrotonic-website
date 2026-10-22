@@ -5,9 +5,9 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 ## How the site works
 
 - Plain HTML, CSS and vanilla JavaScript. No build step, no framework, no npm.
-- `index.html` (home), `privacy.html` (Privacy Notice), `404.html`. Shared styles in `assets/site.css`, behaviour in `assets/site.js`, pre-paint theme in `assets/theme.js`.
+- `index.html` (home), `about.html` (company and founder), `faq.html`, `privacy.html` (Privacy Notice), `404.html`. Shared styles in `assets/site.css`, behaviour in `assets/site.js`, pre-paint theme in `assets/theme.js`, icons in `assets/icons.svg`.
 - Hosted on GitHub Pages from `main` at https://hydrotonic.org. Never delete `CNAME`; GitHub created it and the custom domain depends on it.
-- When `site.css`, `site.js` or `theme.js` changes, bump the `?v=` number on every page so browsers fetch the new file.
+- When `site.css`, `site.js` or `theme.js` changes, bump the `?v=` number on every page so browsers fetch the new file. Asset paths start with `/` so they work from every page.
 
 ## Changes go through pull requests
 
@@ -42,7 +42,8 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm dark teal and near-black surfaces, one green accent (`#4db748`), gradient headline text, small tag labels above headings, pill buttons.
 - Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
 - Font: Montserrat (400, 500, 600) only.
-- Dark is the default theme; light is opt-in through the theme button. Colours come from the CSS variables in `assets/site.css`, and both themes must work.
+- The homepage tells one story in three short chapters: 01 who we are, 02 the tower and how we install it, 03 what we sell. Keep it short; longer content belongs on About or FAQ.
+- Palette is olive green, not grey. Dark is the default theme; light is opt-in through the theme button. Colours come from the CSS variables in `assets/site.css`, and both themes must work.
 - Photos must match what Hydrotonic sells: hydroponics and protected growing (towers, channels, net pots, roots, nurseries) lead. India and farmers appear as people and context (a portrait, a nursery), never as open-field cultivation, which would contradict the vertical-growing message. Never place a stock portrait next to the founder's name. Prefer Hydrotonic's own photos; Unsplash is the fallback and is credited in the footer.
 - Animate only `transform` and `opacity`, never `transition: all`, and keep `prefers-reduced-motion` support. The one exception is the tower line drawing in "Tower highlights", which sets `stroke-dashoffset` from scroll position.
 - Every image has alt text (or `alt=""` if decorative) and width and height attributes.

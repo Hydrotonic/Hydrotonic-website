@@ -8,7 +8,7 @@ address, socials upfront, CSP on every page, noopener, complete translations.
 import os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ["index.html", "privacy.html", "404.html"]
+PAGES = ["index.html", "about.html", "faq.html", "privacy.html", "404.html"]
 failures = []
 
 def read(p):
