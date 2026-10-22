@@ -5,23 +5,57 @@ const $ = id => document.getElementById(id);
 const year = $('y');
 if (year) year.textContent = new Date().getFullYear();
 
-// Light / dark toggle. Without a saved choice the OS setting applies.
-$('theme').addEventListener('click', () => {
-  const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  root.dataset.theme = dark ? 'light' : 'dark';
-  try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-});
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = v => Math.min(1, Math.max(0, v));
 
-// Reveal sections once as they scroll into view.
+// Light / dark toggle (dark is the default). Every .theme-btn on the page works.
+document.querySelectorAll('.theme-btn').forEach(b => b.addEventListener('click', () => {
+  root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+  try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+}));
+
+// Full-screen menu on phones, built on <dialog> for focus trapping and Esc to close.
+const menu = $('menu');
+if (menu) {
+  $('menu-open').addEventListener('click', () => menu.showModal());
+  $('menu-close').addEventListener('click', () => menu.close());
+  menu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => menu.close()));
+}
+
+// Reveal content once as it scrolls into view.
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Back-to-top button.
-const topBtn = $('top-btn');
-if (topBtn) {
-  addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 700), { passive: true });
-  topBtn.addEventListener('click', () => scrollTo({ top: 0 }));
+// Scroll-linked effects, batched into one animation frame per scroll.
+const tower = $('tower'), steps = document.querySelector('.steps'), band = document.querySelector('.band img');
+const parts = tower && {
+  draw: tower.querySelectorAll('.draw'), mods: tower.querySelectorAll('.mod'), leaves: tower.querySelectorAll('.leaves'),
+  water: tower.querySelector('.water'), items: tower.querySelectorAll('.tw-step'), bar: tower.querySelector('.tw-bar i')
+};
+function renderTower(p) {
+  const draw = clamp(p / .4), join = clamp((p - .15) / .35), water = clamp((p - .45) / .1);
+  parts.draw.forEach(el => { el.style.strokeDashoffset = 1 - draw; });
+  // Modules start "flat-packed" apart and slide together into one tower.
+  parts.mods.forEach((el, i) => { el.style.transform = `translateY(${-(1 - join) * (i + 1) * 24}px)`; });
+  parts.water.style.opacity = water * .55;
+  parts.leaves.forEach((el, i) => { const g = clamp((p - .55 - i * .035) / .25); el.style.transform = `scale(${g})`; });
+  const active = Math.min(parts.items.length - 1, Math.floor(p * parts.items.length));
+  parts.items.forEach((el, i) => el.classList.toggle('active', i === active));
+  parts.bar.style.transform = `scaleX(${p})`;
 }
+let ticking = false;
+function onScroll() {
+  document.body.classList.toggle('scrolled', scrollY > 140);
+  if (reduced) return;
+  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - innerHeight))); }
+  if (steps) { const r = steps.getBoundingClientRect(); steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
+  if (band) { const r = band.parentElement.getBoundingClientRect(); band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
+addEventListener('resize', onScroll);
+if (tower && reduced) { renderTower(1); parts.items.forEach(el => el.classList.add('active')); }
+if (steps && reduced) steps.style.setProperty('--p', 1);
+onScroll();
 
 // Instagram (Meta) sets cookies, so its embeds load only after the visitor opts in.
 const igBtn = $('ig-load');
@@ -83,6 +117,16 @@ const T = {
     consent: 'ಈ ವಿಚಾರಣೆಯ ಬಗ್ಗೆ ಹೈಡ್ರೋಟೋನಿಕ್ ನನ್ನನ್ನು ಫೋನ್, ವಾಟ್ಸಾಪ್ ಅಥವಾ ಇಮೇಲ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಲು ನಾನು ಒಪ್ಪುತ್ತೇನೆ. ವಿವರಗಳಿಗೆ <a href="privacy.html">ಗೌಪ್ಯತಾ ಸೂಚನೆ</a> ನೋಡಿ.',
     c_call: 'ಕರೆ ಅಥವಾ ವಾಟ್ಸಾಪ್', c_email: 'ಇಮೇಲ್ ಮತ್ತು ಸಾಮಾಜಿಕ ಜಾಲತಾಣ', c_loc: 'ಸ್ಥಳ',
     foot_blurb: 'ಬೆಳಗಾವಿ, ಕರ್ನಾಟಕದಿಂದ ಕಡಿಮೆ ವೆಚ್ಚದ ಹೈಡ್ರೋಪೋನಿಕ್ ಟವರ್ ವ್ಯವಸ್ಥೆಗಳು, ಸಾಮಗ್ರಿಗಳು ಮತ್ತು ಮಾರ್ಗದರ್ಶನ.', foot_links: 'ಅನ್ವೇಷಿಸಿ', foot_rights: 'ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
+    hf1t: 'ಜಾಗ ಉಳಿಸುವ ಟವರ್‌ಗಳು', hf1s: 'ಲಂಬವಾಗಿ ಬೆಳೆಯಿರಿ', hf1d: 'ಬಾಲ್ಕನಿ, ಟೆರೇಸ್ ಅಥವಾ ಮೇಲ್ಛಾವಣಿಯಲ್ಲೇ ತಾಜಾ ಸೊಪ್ಪು.',
+    hf2t: 'ಸಂಪೂರ್ಣ ಸ್ಥಾಪನೆ', hf2s: 'ವಿನ್ಯಾಸದಿಂದ ಕೊಯ್ಲಿನವರೆಗೆ', hf2d: 'ನಿಮ್ಮ ಫಾರ್ಮ್ ಅನ್ನು ನಾವು ಯೋಜಿಸಿ, ಸ್ಥಾಪಿಸಿ, ಬೆಂಬಲಿಸುತ್ತೇವೆ.',
+    hf3t: 'ಕೃಷಿ ಪದವೀಧರರ ನೇತೃತ್ವ', hf3s: 'ತಜ್ಞ ಮಾರ್ಗದರ್ಶನ', hf3d: 'ಬಿ.ಎಸ್ಸಿ. (ಆನರ್ಸ್) ಕೃಷಿ ಪದವೀಧರರಿಂದ ಸ್ಥಾಪಿತ.',
+    swipe: 'ಇನ್ನಷ್ಟು ನೋಡಲು ಸ್ವೈಪ್ ಮಾಡಿ →',
+    tw_tag: 'ಟವರ್ ವೈಶಿಷ್ಟ್ಯಗಳು', tw_title: 'ಹರಡದೆ, ಮೇಲಕ್ಕೆ ಬೆಳೆಯಲು ನಿರ್ಮಿತ',
+    tw1t: 'ಲಂಬ ವಿನ್ಯಾಸ', tw1d: 'ಕಡಿಮೆ ಜಾಗದಲ್ಲಿ ಹಲವು ಸಸಿಗಳು, ಟೆರೇಸ್ ಅಥವಾ ಮೇಲ್ಛಾವಣಿಯೇ ಫಾರ್ಮ್ ಆಗುತ್ತದೆ.',
+    tw2t: 'ಮರುಬಳಕೆಯ ನೀರು', tw2d: 'ಪಂಪ್ ಪೋಷಕಾಂಶದ ನೀರನ್ನು ಟ್ಯಾಂಕ್‌ನಿಂದ ಮೇಲಕ್ಕೆ ಎತ್ತುತ್ತದೆ, ಅದು ಬೇರುಗಳ ಮೂಲಕ ಕೆಳಗೆ ಹರಿಯುತ್ತದೆ.',
+    tw3t: 'ಮಣ್ಣಿಲ್ಲದ ಕೃಷಿ', tw3d: 'ಸಸಿಗಳು ಕೊಕೊಪೀಟ್ ಇರುವ ನೆಟ್ ಪಾಟ್‌ಗಳಲ್ಲಿ ಬೆಳೆಯುತ್ತವೆ, ಮಣ್ಣು ಅಗೆಯುವ ಅಥವಾ ಕಳೆ ತೆಗೆಯುವ ಕೆಲಸವಿಲ್ಲ.',
+    tw4t: 'ನಿಮಗೆ ತಕ್ಕ ಗಾತ್ರ', tw4d: 'ಮನೆಗಳು, ವ್ಯಾಪಾರಗಳು ಮತ್ತು ವಾಣಿಜ್ಯ ಬೆಳೆಗಾರರಿಗೆ ವ್ಯವಸ್ಥೆಗಳು.',
+    band_title: 'ಭಾರತದ ಬೆಳೆಗಾರರಿಗಾಗಿ ನಿರ್ಮಿತ.', band_text: 'ಬೆಳಗಾವಿಯ ಹೈಡ್ರೋಪೋನಿಕ್ ಟವರ್‌ಗಳೊಂದಿಗೆ ನಿಮ್ಮಲ್ಲಿರುವ ಜಾಗದಲ್ಲೇ ತಾಜಾ ಆಹಾರ ಬೆಳೆಯಿರಿ.',
     nf_title: 'ಈ ಪುಟ ಸಿಗಲಿಲ್ಲ', nf_text: 'ನೀವು ಹುಡುಕುತ್ತಿರುವ ಪುಟ ಸ್ಥಳಾಂತರಗೊಂಡಿರಬಹುದು ಅಥವಾ ಇಲ್ಲದಿರಬಹುದು.', nf_home: 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ'
   },
   hi: {
@@ -133,19 +177,29 @@ const T = {
     consent: 'मैं सहमत हूँ कि हाइड्रोटोनिक इस पूछताछ के बारे में मुझसे फ़ोन, WhatsApp या ईमेल से संपर्क कर सकता है। विवरण के लिए <a href="privacy.html">गोपनीयता सूचना</a> देखें।',
     c_call: 'कॉल या WhatsApp', c_email: 'ईमेल और सोशल मीडिया', c_loc: 'स्थान',
     foot_blurb: 'बेलगावी, कर्नाटक से किफ़ायती हाइड्रोपोनिक टावर सिस्टम, सामग्री और मार्गदर्शन।', foot_links: 'देखें', foot_rights: 'सर्वाधिकार सुरक्षित।',
+    hf1t: 'जगह बचाने वाले टावर', hf1s: 'ऊपर की ओर उगाएँ', hf1d: 'बालकनी, छत या टेरेस पर ताज़ी हरी सब्ज़ियाँ।',
+    hf2t: 'शुरू से अंत तक सेटअप', hf2s: 'डिज़ाइन से फसल तक', hf2d: 'हम आपके फ़ार्म की योजना बनाते हैं, उसे लगाते हैं और साथ देते हैं।',
+    hf3t: 'कृषि स्नातक के नेतृत्व में', hf3s: 'विशेषज्ञ मार्गदर्शन', hf3d: 'बी.एससी. (ऑनर्स) कृषि स्नातक द्वारा स्थापित।',
+    swipe: 'और देखने के लिए स्वाइप करें →',
+    tw_tag: 'टावर की खूबियाँ', tw_title: 'फैलने के बजाय ऊपर बढ़ने के लिए बना',
+    tw1t: 'वर्टिकल डिज़ाइन', tw1d: 'कम जगह में कई पौधे, जिससे छत या टेरेस खेत बन जाती है।',
+    tw2t: 'दोबारा इस्तेमाल होने वाला पानी', tw2d: 'पंप पोषक पानी को टंकी से ऊपर पहुँचाता है और वह जड़ों से होकर नीचे बहता है।',
+    tw3t: 'बिना मिट्टी की खेती', tw3d: 'पौधे कोकोपीट वाले नेट पॉट में उगते हैं, न मिट्टी खोदनी पड़ती है, न निराई करनी पड़ती है।',
+    tw4t: 'आपके हिसाब से आकार', tw4d: 'घरों, व्यवसायों और व्यावसायिक किसानों के लिए सिस्टम।',
+    band_title: 'भारत के किसानों के लिए बना।', band_text: 'बेलगावी के हाइड्रोपोनिक टावरों से अपनी मौजूदा जगह में ताज़ा भोजन उगाएँ।',
     nf_title: 'यह पेज नहीं मिला', nf_text: 'आप जो पेज ढूँढ रहे हैं, वह हटाया या बदला गया हो सकता है।', nf_home: 'होम पेज पर लौटें'
   }
 };
 const nodes = document.querySelectorAll('[data-i18n]');
 const en = [...nodes].map(n => n.innerHTML);
-const sel = $('lang');
+const sels = document.querySelectorAll('.lang-select');
 function setLang(l) {
   nodes.forEach((n, i) => { n.innerHTML = (T[l] && T[l][n.dataset.i18n]) || en[i]; });
   root.lang = l;
-  sel.value = l;
+  sels.forEach(s => { s.value = l; });
   try { localStorage.setItem('lang', l); } catch (e) {}
 }
-sel.addEventListener('change', () => setLang(sel.value));
+sels.forEach(s => s.addEventListener('change', () => setLang(s.value)));
 let saved = 'en';
 try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
 if (saved !== 'en') setLang(saved);

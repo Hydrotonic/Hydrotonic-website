@@ -34,9 +34,12 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 
 ## Design
 
-- Fonts: Source Serif 4 (600) for headings, Inter (400, 500, 600) for everything else.
-- Colours come from the CSS variables in `assets/site.css`; light and dark themes must both work.
-- Animate only `transform` and `opacity`, never `transition: all`, and keep `prefers-reduced-motion` support.
+- Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm dark teal and near-black surfaces, one green accent (`#4db748`), gradient headline text, small tag labels above headings, pill buttons.
+- Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
+- Font: Montserrat (400, 500, 600) only.
+- Dark is the default theme; light is opt-in through the theme button. Colours come from the CSS variables in `assets/site.css`, and both themes must work.
+- Photos must match what Hydrotonic sells: hydroponics and protected growing (towers, channels, net pots, roots, nurseries) lead. India and farmers appear as people and context (a portrait, a nursery), never as open-field cultivation, which would contradict the vertical-growing message. Never place a stock portrait next to the founder's name. Prefer Hydrotonic's own photos; Unsplash is the fallback and is credited in the footer.
+- Animate only `transform` and `opacity`, never `transition: all`, and keep `prefers-reduced-motion` support. The one exception is the tower line drawing in "Tower highlights", which sets `stroke-dashoffset` from scroll position.
 - Every image has alt text (or `alt=""` if decorative) and width and height attributes.
 
 AI-authored commit messages end with a `Co-Authored-By:` line for the agent.

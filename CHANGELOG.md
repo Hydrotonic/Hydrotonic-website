@@ -2,6 +2,16 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-22: Mobile-first redesign inspired by Verdant Robotics
+
+- New look modelled on verdantrobotics.com: Montserrat throughout, near-black and deep teal surfaces with one green accent, gradient headline text, tag labels and pill buttons. Dark is now the default theme.
+- Transparent header over the hero that turns solid on scroll; a full-screen menu on phones with language, theme, WhatsApp, Instagram and LinkedIn.
+- Full-height hero with an aerial photo of Indian farmland and three highlights that become a swipeable rail on phones. Products also swipe on phones.
+- New "Tower highlights" section: a line drawing of a hydroponic tower draws itself, its modules slide together, water fills and plants sprout as you scroll, with four captions (the Hydrotonic take on Verdant's scroll-driven hardware animation).
+- Photos now match the hydroponic message instead of open-field farming: hydroponic lettuce channels in a polyhouse (hero), a net pot with roots hanging free (About), a grower with seedling trays in a shade-net nursery (Contact), and a close-up portrait of an Indian farmer in the "Made for India's growers" band.
+- New full-width statement band with a parallax photo, and a "How it works" timeline that fills as you scroll.
+- Fixed the enquiry form overflowing on phones.
+
 ## 2026-10-22: House rules, privacy and compliance
 
 Applied the rules from Aatif's own website repository.
