@@ -2,6 +2,11 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-22: Pull-request workflow
+
+- Added the "Site checks" GitHub Action, which runs `scripts/check_site.py` on every pull request and push to `main`.
+- `AGENTS.md` now requires all changes to go through an approved pull request.
+
 ## 2026-10-22: Mobile-first redesign inspired by Verdant Robotics
 
 - New look modelled on verdantrobotics.com: Montserrat throughout, near-black and deep teal surfaces with one green accent, gradient headline text, tag labels and pill buttons. Dark is now the default theme.

@@ -9,7 +9,12 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - Hosted on GitHub Pages from `main` at https://hydrotonic.org. Never delete `CNAME`; GitHub created it and the custom domain depends on it.
 - When `site.css`, `site.js` or `theme.js` changes, bump the `?v=` number on every page so browsers fetch the new file.
 
-## Before every push
+## Changes go through pull requests
+
+- `main` is protected. Never push to it directly: work on a branch, open a pull request, and wait for the repository owner (the Hydrotonic account) to approve it before merging.
+- The "Site checks" GitHub Action (`.github/workflows/site-checks.yml`) runs `scripts/check_site.py` on every pull request and must pass. Keep its actions pinned to full commit SHAs and its permissions read-only.
+
+## Before every pull request
 
 1. Run `python scripts/check_site.py` and fix every failure.
 2. Check the page in a browser near 1440px and 375px wide, in light and dark mode: no console errors, no horizontal scroll, every control at least 44px tall on mobile.
