@@ -2,6 +2,14 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-22: Story homepage, About and FAQ pages, olive palette
+
+- Homepage rebuilt as a short story in three chapters: 01 who we are, 02 the tower (scroll animation) and how we install it, 03 what we sell. The install steps now follow the tower instead of sitting in a separate "How it works" section, and the separate Services grid is gone.
+- New `about.html`: the company story, stats, the Instagram gallery and a founder section for Mohammed Daanish Mulla (UAS Dharwad, RAWE fieldwork, NSS 2024-25 special camp, founding Hydrotonic).
+- New `faq.html` with all seven questions; the homepage links to it from Contact.
+- Palette shifted from grey to olive green in both dark and light modes.
+- Icons moved to one shared `assets/icons.svg`; the homepage no longer loads anything from Instagram.
+
 ## 2026-10-22: Pull-request workflow
 
 - Added the "Site checks" GitHub Action, which runs `scripts/check_site.py` on every pull request and push to `main`.
