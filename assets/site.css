@@ -199,11 +199,21 @@ footer .foot-logo img { height: auto; width: 170px; }
 .tower-art { height: 78svh; display: grid; place-items: center; }
 .tower-art svg { height: min(72svh, 640px); width: auto; overflow: visible; }
 .tower-art .draw { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-opacity: .75; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
-.tower-art .accent { stroke: var(--green); stroke-opacity: 1; }
-.tower-art .water { fill: var(--green); opacity: 0; }
+.tower-art .accent { stroke: var(--water); stroke-opacity: 1; }
+.tower-art .water { fill: var(--water); opacity: 0; }
 .tower-art .leaf { fill: var(--green); }
 .tower-art .leaves { transform-box: fill-box; transform-origin: center bottom; transform: scale(0); }
-.tower-art .mod { transform-box: view-box; }
+.tower-art { --water: #5cb8ee; --sun: #f2c14e; }
+:root[data-theme="light"] .tower-art { --water: #1f8fd6; --sun: #e3a21a; }
+.tower-art .pipe { stroke-width: 5; stroke-opacity: .16; }
+.tower-art .rise { fill: none; stroke: var(--water); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.tower-art .drip { fill: none; stroke: var(--water); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 2 9; opacity: 0; }
+.tower-art .sun { fill: var(--sun); stroke: var(--sun); stroke-width: 2; stroke-linecap: round; opacity: 0; }
+.tower-art .rays { transform-box: fill-box; transform-origin: center; }
+.tower-art .beam { opacity: 0; }
+.tower-art .glow { opacity: .35; }
+:root[data-theme="light"] .tower-art .glow { opacity: 1; }
+.tower-art stop { stop-color: var(--sun); }
 .tw-steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 8px; }
 .tw-step { padding: 14px 0 14px 20px; border-left: 2px solid var(--line); opacity: .38; transition: opacity .35s, transform .35s; }
 .tw-step.active { opacity: 1; border-left-color: var(--green); }
