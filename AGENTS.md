@@ -25,7 +25,9 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - No em dashes anywhere, including the Kannada and Hindi translations in `assets/site.js`.
 - No empty buzzwords (delve, unlock, elevate, transform, synergy, game-changing, and similar).
 - Every claim must be true and sourced from Hydrotonic's own card, Instagram or LinkedIn, or confirmed by the owner. No invented testimonials, prices or numbers.
-- Every visible string has a `data-i18n` key with Kannada (`kn`) and Hindi (`hi`) entries in `assets/site.js`. Translations need a native speaker's review.
+- Every visible string has a `data-i18n` key with Kannada (`kn`), Hindi (`hi`) and Marathi (`mr`) entries in `assets/site.js`, one key per line in page order. Translations need a native speaker's review.
+- In translations, keep WhatsApp, Instagram, UAS, RAWE and NSS as written in Hindi and Marathi; Kannada uses the transliterated app names. Write the brand in each script (ಹೈಡ್ರೋಟೋನಿಕ್, हाइड्रोटोनिक, हायड्रोटॉनिक) and the city as the official Belagavi (ಬೆಳಗಾವಿ, बेलगावी, बेळगावी). Name the university as "University of Agricultural Sciences, Dharwad" in full, the same way in every language.
+- Kannada and Devanagari use Noto Sans Kannada and Noto Sans Devanagari (loaded with Montserrat; the browser fetches them only when those scripts are on screen). Those languages get taller line heights and no negative letter spacing; check that new strings fit at 360px.
 
 ## Privacy and compliance
 
