@@ -7,7 +7,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - Plain HTML, CSS and vanilla JavaScript. No build step, no framework, no npm.
 - `index.html` (home), `about.html` (company and founder), `faq.html`, `privacy.html` (Privacy Notice), `404.html`. Shared styles in `assets/site.css`, behaviour in `assets/site.js`, pre-paint theme in `assets/theme.js`, icons in `assets/icons.svg`.
 - Hosted on GitHub Pages from `main` at https://hydrotonic.org. Never delete `CNAME`; GitHub created it and the custom domain depends on it.
-- When `site.css`, `site.js` or `theme.js` changes, bump the `?v=` number on every page so browsers fetch the new file. Asset paths start with `/` so they work from every page.
+- When `site.css`, `site.js` or `theme.js` changes, bump the `?v=` number on every page (including the `icons.svg` references) so browsers fetch the new file. Asset paths start with `/` so they work from every page.
 
 ## Changes go through pull requests
 
@@ -32,7 +32,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 ## Privacy and compliance
 
 - Never publish the full street address, building name or a map pin. Location is "Belagavi, Karnataka" only.
-- Instagram and LinkedIn stay labelled in the top bar of every page.
+- Instagram and LinkedIn stay linked on every page (menu, contact section and footer). There is no top bar above the header; the owner removed it on 2026-10-23 for a cleaner look.
 - The enquiry form keeps its required consent checkbox and the link to the Privacy Notice. If data handling changes (new form tool, analytics, cookies), update `privacy.html` first.
 - The site loads no third-party embeds. If one is ever added and it sets cookies (for example Instagram), it must load only after the visitor clicks, and `privacy.html` must say so.
 - Keep the Content Security Policy meta tag on every page. No inline JavaScript or `on...=` handlers; JSON-LD is the only inline script. Add a new external domain to the CSP only when a feature needs it.
@@ -42,6 +42,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 ## Design
 
 - Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), solid headings (no gradient text), pill buttons.
+- Header: sentence case throughout (the name reads "Hydrotonic"). Links to sections of the homepage come first, then a thin divider, then links to other pages (About, FAQ) with a small arrow icon. "Get a quote" is the only filled button and sits at the far right, on phones too.
 - Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
 - Font: Montserrat (400, 500, 600) only.
 - The homepage tells one story in order: who we are, the tower and how we install it, what we sell. Keep it short; longer content belongs on About or FAQ.
@@ -55,7 +56,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - Photos must match what Hydrotonic sells: hydroponics and protected growing (towers, channels, net pots, roots, nurseries) lead. India and farmers appear as people and context (a portrait, a nursery), never as open-field cultivation, which would contradict the vertical-growing message. Never place a stock portrait next to the founder's name. Prefer Hydrotonic's own photos; Unsplash is the fallback and is credited in the footer.
 - Photo treatment: a sharp, softly glowing centre, blurred edges and a light vignette (`about-wide.jpg`, `greens-wide.jpg`). Never darken the whole frame; the overlay only darkens where text sits.
 - Animate only `transform` and `opacity`, never `transition: all`, and keep `prefers-reduced-motion` support. The one exception is the tower illustration in "02 · The tower", which sets `stroke-dashoffset` from scroll position for its line drawing and water.
-- The tower illustration shows Hydrotonic's real design, as in the logo and the owner's builds: three single-tube towers (the middle one tallest) with net-pot cups in several columns, caps and a header pipe on top, and one reservoir pipe at the base. The pump sits in the reservoir and lifts water up the centre of the middle tower, over to the side towers, and it trickles back down inside. Never draw stacked boxes or an outside riser pipe. It is the only place that uses blue for water and yellow for the sun (`--water`, `--sun`, scoped to `.tower-art`). The SVG comes from `scripts/gen_tower.py`; change the script and paste its output rather than editing coordinates by hand.
+- The tower illustration shows Hydrotonic's real design, as in the logo and the owner's builds: three single-tube towers (the middle one tallest) with net-pot cups in several columns, caps and a header pipe on top, and one reservoir pipe at the base. The pump sits in the reservoir and lifts water up the centre of the middle tower, over to the side towers, and it trickles back down inside. Never draw stacked boxes or an outside riser pipe. The drawing completes one screen before the section unpins, so the last screen of scroll shows the finished tower with nothing changing; keep that hold if you change the section height. It is the only place that uses blue for water and yellow for the sun (`--water`, `--sun`, scoped to `.tower-art`). The SVG comes from `scripts/gen_tower.py`; change the script and paste its output rather than editing coordinates by hand.
 - Every image has alt text (or `alt=""` if decorative) and width and height attributes.
 
 AI-authored commit messages end with a `Co-Authored-By:` line for the agent.

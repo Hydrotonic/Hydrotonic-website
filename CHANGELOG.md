@@ -2,6 +2,15 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Cleaner header
+
+- Removed the strip above the header (phone, email, location, Instagram, LinkedIn). Instagram and LinkedIn are still linked in the menu, the contact section and the footer; the Privacy and 404 footers now link them too.
+- Header in sentence case: the name now reads "Hydrotonic" instead of all capitals.
+- Header and menu links run sections first (The tower, Products, Contact), then a thin divider, then other pages (About, FAQ) marked with a small arrow.
+- "Get a quote" is now a filled green button on its own at the far right, on phones too. The phone header was tightened so the name, menu and button always fit (checked from 320 to 1440px in all four languages); the Kannada label is now the shorter "ದರ ಕೇಳಿ".
+- The tower drawing now finishes one screen early and holds, complete, for one more screen of scrolling before the page moves on. (This was meant to ship with the less-text update but missed the merge.)
+- Asset version numbers are bumped properly again, now including the icon sprite, so returning visitors get the new files.
+
 ## 2026-10-23: Marathi, and a full language pass
 
 - Added Marathi (मराठी) to the language menu on every page, with every string translated. The site check now requires Kannada, Hindi and Marathi for every key.

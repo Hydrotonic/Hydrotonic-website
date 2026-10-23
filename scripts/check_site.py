@@ -3,7 +3,7 @@
 
 Run:  python scripts/check_site.py     Exit 0 = pass, 1 = failures.
 Guards the house rules in AGENTS.md: no em dashes, no buzzwords, no street
-address, socials upfront, CSP on every page, noopener, complete translations.
+address, socials linked, CSP on every page, noopener, complete translations.
 """
 import os, re, sys
 
@@ -34,9 +34,8 @@ for p, s in pages.items():
     if re.search(r"\son[a-z]+\s*=", s, re.I): failures.append(f"{p}: inline event handler")
     inline = re.findall(r'<script(?![^>]*\b(?:src|type="application/ld\+json"))[^>]*>\s*\S', s)
     if inline: failures.append(f"{p}: inline executable script")
-    top = s.split("<header", 1)[0]
-    if "instagram.com/hydrotonic.in" not in top or "linkedin.com/company/hydrotonic" not in top:
-        failures.append(f"{p}: Instagram and LinkedIn must be in the top bar")
+    if "instagram.com/hydrotonic.in" not in s or "linkedin.com/company/hydrotonic" not in s:
+        failures.append(f"{p}: Instagram and LinkedIn must be linked")
     for a in re.findall(r"<a\b[^>]*>", s):
         if 'target="_blank"' in a and "noopener" not in a: failures.append(f"{p}: target=_blank without noopener")
     ids = set(re.findall(r'\bid="([^"]+)"', s))
@@ -56,7 +55,7 @@ for lang in ["kn", "hi", "mr"]:
 
 # Cache-busters must match across pages.
 versions = set()
-for s in pages.values(): versions |= set(re.findall(r"assets/(?:site\.css|site\.js|theme\.js)\?v=(\d+)", s))
+for s in pages.values(): versions |= set(re.findall(r"assets/(?:site\.css|site\.js|theme\.js|icons\.svg)\?v=(\d+)", s))
 if len(versions) != 1: failures.append(f"asset ?v= numbers differ across pages: {sorted(versions)}")
 
 if read("CNAME").strip() != "hydrotonic.org": failures.append("CNAME changed")
