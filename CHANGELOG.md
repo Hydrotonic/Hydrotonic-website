@@ -2,6 +2,13 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Tower illustration redrawn after Hydrotonic's own towers
+
+- The "02 · The tower" animation now shows three single-tube towers on one reservoir pipe, like the logo and the founder's builds, instead of stacked boxes with an outside pipe.
+- As you scroll: the towers draw in, the reservoir fills, the pump in the base lifts water up the centre of the middle tower and across the top pipe into the side towers, water trickles back down inside, and leaves grow from cups on the left, front and right of each tower.
+- A sun in the top corner, with a soft glow, shows the plants growing toward the light. Water is blue and the sun yellow, in this illustration only.
+- The "Recirculating water" step now says the pump sits in the reservoir and lifts water up the centre of the tower (English, Kannada and Hindi).
+
 ## 2026-10-23: Sharper link preview
 
 - The link-preview banner is now 2400x1260 (`img/og-banner.jpg`, 232 KB), rebuilt from the 1280x730 original with edge sharpening so the wordmark, tagline and product icons stay crisp. It has a new filename so apps fetch it again.

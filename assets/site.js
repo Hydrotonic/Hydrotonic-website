@@ -29,16 +29,22 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // Scroll-linked effects, batched into one animation frame per scroll.
 const tower = $('tower'), steps = document.querySelector('.steps'), band = document.querySelector('.band img');
 const parts = tower && {
-  draw: tower.querySelectorAll('.draw'), mods: tower.querySelectorAll('.mod'), leaves: tower.querySelectorAll('.leaves'),
-  water: tower.querySelector('.water'), items: tower.querySelectorAll('.tw-step'), bar: tower.querySelector('.tw-bar i')
+  draw: tower.querySelectorAll('.draw'), rise: tower.querySelectorAll('.rise'), drip: tower.querySelectorAll('.drip'),
+  leaves: tower.querySelectorAll('.leaves'), water: tower.querySelector('.water'), sun: tower.querySelector('.sun'),
+  rays: tower.querySelector('.rays'), beam: tower.querySelector('.beam'), items: tower.querySelectorAll('.tw-step'), bar: tower.querySelector('.tw-bar i')
 };
 function renderTower(p) {
-  const draw = clamp(p / .4), join = clamp((p - .15) / .35), water = clamp((p - .45) / .1);
+  // The tower draws in, the reservoir fills, the pump lifts water up the centre and over the top,
+  // it trickles back down inside, and the leaves grow toward the sun.
+  const draw = clamp(p / .35), fill = clamp((p - .28) / .1), rise = clamp((p - .36) / .18), drip = clamp((p - .52) / .08);
   parts.draw.forEach(el => { el.style.strokeDashoffset = 1 - draw; });
-  // Modules start "flat-packed" apart and slide together into one tower.
-  parts.mods.forEach((el, i) => { el.style.transform = `translateY(${-(1 - join) * (i + 1) * 24}px)`; });
-  parts.water.style.opacity = water * .55;
-  parts.leaves.forEach((el, i) => { const g = clamp((p - .55 - i * .035) / .25); el.style.transform = `scale(${g})`; });
+  parts.water.style.opacity = fill * .8;
+  parts.rise.forEach(el => { el.style.strokeDashoffset = 1 - rise; });
+  parts.drip.forEach(el => { el.style.opacity = drip * .9; el.style.strokeDashoffset = -p * 240; });
+  parts.sun.style.opacity = clamp(p / .15);
+  parts.rays.style.transform = `rotate(${p * 90}deg)`;
+  parts.beam.style.opacity = clamp((p - .45) / .2);
+  parts.leaves.forEach((el, i) => { const g = clamp((p - .5 - i * .016) / .15); el.style.transform = `scale(${g})`; });
   const active = Math.min(parts.items.length - 1, Math.floor(p * parts.items.length));
   parts.items.forEach((el, i) => el.classList.toggle('active', i === active));
   parts.bar.style.transform = `scaleX(${p})`;
@@ -123,7 +129,7 @@ const T = {
     swipe: 'ಇನ್ನಷ್ಟು ನೋಡಲು ಸ್ವೈಪ್ ಮಾಡಿ →',
     tw_tag: 'ಟವರ್ ವೈಶಿಷ್ಟ್ಯಗಳು', tw_title: 'ಹರಡದೆ, ಮೇಲಕ್ಕೆ ಬೆಳೆಯಲು ನಿರ್ಮಿತ',
     tw1t: 'ಲಂಬ ವಿನ್ಯಾಸ', tw1d: 'ಕಡಿಮೆ ಜಾಗದಲ್ಲಿ ಹಲವು ಸಸಿಗಳು, ಟೆರೇಸ್ ಅಥವಾ ಮೇಲ್ಛಾವಣಿಯೇ ಫಾರ್ಮ್ ಆಗುತ್ತದೆ.',
-    tw2t: 'ಮರುಬಳಕೆಯ ನೀರು', tw2d: 'ಪಂಪ್ ಪೋಷಕಾಂಶದ ನೀರನ್ನು ಟ್ಯಾಂಕ್‌ನಿಂದ ಮೇಲಕ್ಕೆ ಎತ್ತುತ್ತದೆ, ಅದು ಬೇರುಗಳ ಮೂಲಕ ಕೆಳಗೆ ಹರಿಯುತ್ತದೆ.',
+    tw2t: 'ಮರುಬಳಕೆಯ ನೀರು', tw2d: 'ಟ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಪಂಪ್ ಪೋಷಕಾಂಶದ ನೀರನ್ನು ಟವರ್‌ನ ಮಧ್ಯದಿಂದ ಮೇಲಕ್ಕೆ ಎತ್ತುತ್ತದೆ, ಅದು ಬೇರುಗಳ ಮೂಲಕ ಕೆಳಗೆ ಹರಿಯುತ್ತದೆ.',
     tw3t: 'ಮಣ್ಣಿಲ್ಲದ ಕೃಷಿ', tw3d: 'ಸಸಿಗಳು ಕೊಕೊಪೀಟ್ ಇರುವ ನೆಟ್ ಪಾಟ್‌ಗಳಲ್ಲಿ ಬೆಳೆಯುತ್ತವೆ, ಮಣ್ಣು ಅಗೆಯುವ ಅಥವಾ ಕಳೆ ತೆಗೆಯುವ ಕೆಲಸವಿಲ್ಲ.',
     tw4t: 'ನಿಮಗೆ ತಕ್ಕ ಗಾತ್ರ', tw4d: 'ಮನೆಗಳು, ವ್ಯಾಪಾರಗಳು ಮತ್ತು ವಾಣಿಜ್ಯ ಬೆಳೆಗಾರರಿಗೆ ವ್ಯವಸ್ಥೆಗಳು.',
     band_title: 'ಭಾರತದ ಬೆಳೆಗಾರರಿಗಾಗಿ ನಿರ್ಮಿತ.', band_text: 'ಬೆಳಗಾವಿಯ ಹೈಡ್ರೋಪೋನಿಕ್ ಟವರ್‌ಗಳೊಂದಿಗೆ ನಿಮ್ಮಲ್ಲಿರುವ ಜಾಗದಲ್ಲೇ ತಾಜಾ ಆಹಾರ ಬೆಳೆಯಿರಿ.',
@@ -194,7 +200,7 @@ const T = {
     swipe: 'और देखने के लिए स्वाइप करें →',
     tw_tag: 'टावर की खूबियाँ', tw_title: 'फैलने के बजाय ऊपर बढ़ने के लिए बना',
     tw1t: 'वर्टिकल डिज़ाइन', tw1d: 'कम जगह में कई पौधे, जिससे छत या टेरेस खेत बन जाती है।',
-    tw2t: 'दोबारा इस्तेमाल होने वाला पानी', tw2d: 'पंप पोषक पानी को टंकी से ऊपर पहुँचाता है और वह जड़ों से होकर नीचे बहता है।',
+    tw2t: 'दोबारा इस्तेमाल होने वाला पानी', tw2d: 'टंकी में लगा पंप पोषक पानी को टावर के बीच से ऊपर पहुँचाता है और वह जड़ों से होकर नीचे बहता है।',
     tw3t: 'बिना मिट्टी की खेती', tw3d: 'पौधे कोकोपीट वाले नेट पॉट में उगते हैं, न मिट्टी खोदनी पड़ती है, न निराई करनी पड़ती है।',
     tw4t: 'आपके हिसाब से आकार', tw4d: 'घरों, व्यवसायों और व्यावसायिक किसानों के लिए सिस्टम।',
     band_title: 'भारत के किसानों के लिए बना।', band_text: 'बेलगावी के हाइड्रोपोनिक टावरों से अपनी मौजूदा जगह में ताज़ा भोजन उगाएँ।',
