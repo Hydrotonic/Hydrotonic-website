@@ -2,6 +2,10 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Sharper link preview
+
+- The link-preview banner is now 2400x1260 (`img/og-banner.jpg`, 232 KB), rebuilt from the 1280x730 original with edge sharpening so the wordmark, tagline and product icons stay crisp. It has a new filename so apps fetch it again.
+
 ## 2026-10-23: Link preview image
 
 - Pasting hydrotonic.org (home, About or FAQ) into WhatsApp, LinkedIn, Facebook or X now shows the Hydrotonic brand banner (`img/og-share.jpg`, 1200x630, 75 KB). It replaces the three different preview images.
