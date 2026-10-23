@@ -146,9 +146,9 @@ footer .foot-logo img { height: auto; width: 170px; }
 /* ---------- Page hero (About) ---------- */
 .page-hero { position: relative; min-height: 64svh; display: flex; align-items: flex-end; padding: 160px 0 56px; color: #fff; overflow: hidden; isolation: isolate; }
 .page-hero .bg { position: absolute; inset: 0; z-index: -2; background: center/cover no-repeat url("/img/about-wide.jpg"); }
-.page-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(2, 2, 2, .7) 0%, rgba(30, 54, 34, .45) 45%, var(--hero-end) 100%); }
-.page-hero h1 { font-size: clamp(2.2rem, 7vw, 3.8rem); background: linear-gradient(180deg, #ffffff 35%, #b5c4aa 125%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.page-hero p { color: #e2ecd6; max-width: 58ch; margin: 0; font-size: 1.05rem; }
+.page-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(2, 2, 2, .5) 0%, rgba(2, 2, 2, .06) 26%, rgba(30, 54, 34, .1) 48%, rgba(30, 54, 34, .72) 80%, var(--hero-end) 100%); }
+.page-hero h1 { filter: drop-shadow(0 2px 14px rgba(0, 0, 0, .45)); font-size: clamp(2.2rem, 7vw, 3.8rem); background: linear-gradient(180deg, #ffffff 35%, #b5c4aa 125%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.page-hero p { text-shadow: 0 1px 10px rgba(0, 0, 0, .5); color: #e2ecd6; max-width: 58ch; margin: 0; font-size: 1.05rem; }
 .page-hero .tag { background: rgba(2, 2, 2, .45); color: #8fd96a; }
 .page-head { padding: 64px 0 24px; }
 .page-head h1 { font-size: clamp(2.1rem, 6.4vw, 3.4rem); }
@@ -251,7 +251,8 @@ footer .foot-logo img { height: auto; width: 170px; }
 .band p { max-width: 46ch; margin: 0 auto; }
 .band::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, var(--bg) 0%, rgba(2, 2, 2, .1) 22%, rgba(2, 2, 2, .15) 48%, rgba(30, 54, 34, .85) 78%, var(--bg) 100%); }
 .band h2 { font-size: clamp(1.9rem, 6vw, 3.4rem); max-width: 18ch; margin: 0 auto 14px; background: linear-gradient(180deg, #ffffff 35%, #a3a9a9 130%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.band p { color: #dbe3e4; margin: 0; }
+.band p { color: #dbe3e4; margin: 0 auto; }
+.band .ctas { max-width: none; margin-top: 24px; justify-content: center; }
 
 
 /* ---------- How it works: timeline that fills as you scroll ---------- */
@@ -367,15 +368,13 @@ footer .brand { color: #fff; margin-bottom: 12px; }
 
 /* ---------- UAS Dharwad emblem: badge and stamp ---------- */
 .uas-badge { width: 48px; height: 48px; border-radius: 50%; flex: none; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .25)); }
-.teaser .who { position: relative; }
-.teaser .uas-badge { position: absolute; left: 32px; top: 50%; width: 34px; height: 34px; transform: rotate(-12deg); }
+.teaser .who { display: grid; grid-template-columns: 56px 1fr; column-gap: 16px; row-gap: 8px; align-items: center; }
+.teaser .who p { grid-column: 2; grid-row: 1 / span 2; }
+.teaser .uas-badge { grid-column: 1; grid-row: 2; justify-self: center; width: 36px; height: 36px; }
 .with-badge { display: inline-flex; align-items: center; gap: 8px; }
 .with-badge .uas-badge { width: 30px; height: 30px; }
 .facts-list .edu { position: relative; padding-right: 112px; }
 .uas-stamp { position: absolute; width: 84px; height: 84px; border-radius: 50%; transform: rotate(-12deg); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
 .edu .uas-stamp { right: 18px; top: 50%; margin-top: -42px; }
 .stat b.with-badge { display: flex; }
-.portrait-wrap { position: relative; margin-bottom: 18px; }
-.portrait-wrap .portrait { margin-bottom: 0; display: block; }
-.uas-stamp.on-photo { right: 14px; bottom: 14px; width: 76px; height: 76px; }
 @media (max-width: 560px) { .facts-list .edu { padding-right: 20px; } .edu .uas-stamp { width: 52px; height: 52px; top: 10px; margin-top: 0; right: 12px; } .edu h3 { min-height: 44px; padding-right: 56px; } }
