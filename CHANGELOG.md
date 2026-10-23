@@ -8,6 +8,7 @@ All notable changes to hydrotonic.org. Newest first.
 - Removed the template look: no eyebrow tags, no "01 · 02 · 03" section labels or product number badges, no gradient headings, no numbers in the mobile menu.
 - Cut the subtext: pillar descriptions, product descriptions, section leads, the swipe hint and the band sentence are gone. The tower steps are now one short line each that narrates the animation.
 - "And we set it up for you" is now a four-step icon diagram in the same line style as the tower: tell us about your space, we design it, we bring it and set it up, grow with our support.
+- The tower drawing now finishes one screen early and stays pinned, complete, for one more screen of scrolling before the page moves on, so visitors can see the finished tower. The animation itself runs at the same speed.
 - Removed translation entries that no page uses anymore.
 
 ## 2026-10-23: Tower illustration redrawn after Hydrotonic's own towers

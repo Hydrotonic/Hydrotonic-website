@@ -53,7 +53,8 @@ let ticking = false;
 function onScroll() {
   document.body.classList.toggle('scrolled', scrollY > 140);
   if (reduced) return;
-  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - innerHeight))); }
+  // The drawing finishes one screen early; that last screen holds the finished tower before the page moves on.
+  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - 2 * innerHeight))); }
   if (steps) { const r = steps.getBoundingClientRect(); steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
   if (band) { const r = band.parentElement.getBoundingClientRect(); band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
 }
