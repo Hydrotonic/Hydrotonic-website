@@ -63,7 +63,11 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
 .page-sub .nav { background: var(--bg); color: var(--strong); border-bottom: 1px solid var(--line); }
 .brand { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; font-weight: 600; font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase; }
-.brand img { height: 38px; width: auto; border-radius: 8px; }
+.brand img { height: 38px; width: auto; }
+.brand .mark-navy { display: none; }
+:root[data-theme="light"] .scrolled .nav .mark-light, :root[data-theme="light"] .page-sub .nav .mark-light, :root[data-theme="light"] .menu .mark-light { display: none; }
+:root[data-theme="light"] .scrolled .nav .mark-navy, :root[data-theme="light"] .page-sub .nav .mark-navy, :root[data-theme="light"] .menu .mark-navy { display: block; }
+footer .foot-logo img { height: auto; width: 170px; }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a { text-decoration: none; color: inherit; opacity: .85; font-size: .93rem; font-weight: 500; padding: 12px 0; }
 .nav-links a:hover { opacity: 1; color: var(--green); }
@@ -110,8 +114,8 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 150px 0 40px; overflow: hidden; color: #fff; isolation: isolate; }
-.hero-bg { position: absolute; inset: 0; z-index: -2; background: center/cover no-repeat url("/img/hero-wide.jpg"); animation: drift 24s ease-in-out infinite alternate; }
-@media (max-width: 768px) { .hero-bg { background-image: url("/img/hero-tall.jpg"); } }
+.hero-bg { position: absolute; inset: 0; z-index: -2; background: center/cover no-repeat url("https://images.unsplash.com/photo-1784601758625-9dcefc5a2b71?w=1800&h=1100&q=72&auto=format&fit=crop"); animation: drift 24s ease-in-out infinite alternate; }
+@media (max-width: 768px) { .hero-bg { background-image: url("https://images.unsplash.com/photo-1784601758625-9dcefc5a2b71?w=900&h=1600&q=70&auto=format&fit=crop"); } }
 @keyframes drift { from { transform: scale(1.04); } to { transform: scale(1.14) translateY(-2%); } }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(2, 2, 2, .55), transparent 18%, transparent 82%, rgba(2, 2, 2, .55)), linear-gradient(180deg, rgba(2, 2, 2, .78) 0%, rgba(30, 54, 34, .42) 32%, rgba(30, 54, 34, .55) 62%, var(--hero-end) 100%); }
 .hero-copy { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 48px; }
@@ -284,7 +288,7 @@ details p { margin: 0 0 20px; color: var(--muted); }
 
 /* ---------- Contact ---------- */
 .contact { position: relative; isolation: isolate; overflow: hidden; }
-.contact-bg { position: absolute; left: 0; right: 0; top: 0; height: 660px; z-index: -1; background: center 38%/cover url("/img/contact.jpg"); }
+.contact-bg { position: absolute; left: 0; right: 0; top: 0; height: 660px; z-index: -1; background: center 30%/cover url("https://images.unsplash.com/photo-1709544768667-e62df3cb4abd?w=1600&q=70&auto=format&fit=crop"); }
 .contact-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2, 2, 2, .2) 0%, rgba(2, 2, 2, .1) 30%, rgba(30, 54, 34, .8) 62%, var(--bg) 100%); }
 .contact .head { color: #fff; padding-top: clamp(220px, 32vw, 300px); }
 .contact .head h2 { background: linear-gradient(180deg, #ffffff 35%, #a3a9a9 130%); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -360,3 +364,18 @@ footer .brand { color: #fff; margin-bottom: 12px; }
 }
 .faq-body { padding-top: 24px; }
 .lead.center { margin-left: auto; margin-right: auto; }
+
+/* ---------- UAS Dharwad emblem: badge and stamp ---------- */
+.uas-badge { width: 48px; height: 48px; border-radius: 50%; flex: none; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .25)); }
+.teaser .who { position: relative; }
+.teaser .uas-badge { position: absolute; left: 32px; top: 50%; width: 34px; height: 34px; transform: rotate(-12deg); }
+.with-badge { display: inline-flex; align-items: center; gap: 8px; }
+.with-badge .uas-badge { width: 30px; height: 30px; }
+.facts-list .edu { position: relative; padding-right: 112px; }
+.uas-stamp { position: absolute; width: 84px; height: 84px; border-radius: 50%; transform: rotate(-12deg); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
+.edu .uas-stamp { right: 18px; top: 50%; margin-top: -42px; }
+.stat b.with-badge { display: flex; }
+.portrait-wrap { position: relative; margin-bottom: 18px; }
+.portrait-wrap .portrait { margin-bottom: 0; display: block; }
+.uas-stamp.on-photo { right: 14px; bottom: 14px; width: 76px; height: 76px; }
+@media (max-width: 560px) { .facts-list .edu { padding-right: 20px; } .edu .uas-stamp { width: 52px; height: 52px; top: 10px; margin-top: 0; right: 12px; } .edu h3 { min-height: 44px; padding-right: 56px; } }
