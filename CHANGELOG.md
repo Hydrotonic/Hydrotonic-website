@@ -2,6 +2,21 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: The Tower
+
+- The menu link now reads "The Tower", capitalised as the product's name, in the header, the phone menu and the footer.
+
+## 2026-10-23: Mobile pass
+
+- Lighter pages: the header logo was downloading about 350 KB (both colour versions, at desktop poster size) for a 46px mark; it is now 8 KB, and the version only used in light mode loads only when needed. The footer logo went from 195 KB to 25 KB and the UAS emblem from 224 KB to 29 KB, with no visible difference. The phone hero photo is 242 KB instead of 318 KB and is fetched first; the farmer and contact photos load phone-sized versions on phones.
+- Smoother scrolling: the tower animation does no work outside its section and only updates what changed inside it (about 30% less work per frame); the hero's slow drift pauses once it is off screen; on touch screens the fixed header is solid instead of a live blur, which is costly on mid-range phones.
+- No more jump: on FAQ, Privacy and 404 the content jumped 69px when the header turned fixed while scrolling. It now keeps its space.
+- Touch: every link and button is at least 44x44px (contact links were 26px tall, footer links 42px); hover lifts no longer stick after a tap, and buttons and cards give a small press response instead; the background no longer scrolls behind the open menu; the product row does not trigger the browser's back-swipe.
+- Safe areas: the header, menu, footer and floating WhatsApp button keep clear of notches and the iPhone home bar.
+- The floating WhatsApp button now steps aside over the enquiry form and the About page buttons, where it used to cover "Send enquiry".
+- Native touches: the address bar follows the light or dark theme, and the site has a home-screen icon and web app manifest for "Add to Home Screen".
+- Every tower leaf now reaches full size at the end of the animation (the top ones stopped at 98.7%).
+
 ## 2026-10-23: One contact row for products
 
 - The four product cards no longer each carry an "Enquire on WhatsApp" link; they show just the photo and the name.

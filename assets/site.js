@@ -11,8 +11,29 @@ const clamp = v => Math.min(1, Math.max(0, v));
 // Light / dark toggle (dark is the default). Every .theme-btn on the page works.
 document.querySelectorAll('.theme-btn').forEach(b => b.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+  barColour();
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
 }));
+
+// The phone's address bar takes the page colour.
+function barColour() { const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = root.dataset.theme === 'light' ? '#f1f5ea' : '#1d2a20'; }
+barColour();
+
+// Pause the hero's slow drift when it is off screen, to save battery.
+const hero = document.querySelector('.hero');
+if (hero && !reduced) new IntersectionObserver(([e]) => hero.classList.toggle('still', !e.isIntersecting)).observe(hero);
+
+// The floating WhatsApp button steps aside where the page already offers WhatsApp and Call,
+// so it never covers the enquiry form or those buttons.
+const wa = document.querySelector('.wa-float'), spots = document.querySelectorAll('#contact, .band .ctas');
+if (wa && spots.length) {
+  const shown = new Set();
+  const watch = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) shown.add(e.target); else shown.delete(e.target); });
+    wa.classList.toggle('away', shown.size > 0);
+  });
+  spots.forEach(s => watch.observe(s));
+}
 
 // Full-screen menu on phones, built on <dialog> for focus trapping and Esc to close.
 const menu = $('menu');
@@ -36,27 +57,30 @@ const parts = tower && {
 function renderTower(p) {
   // The tower draws in, the reservoir fills, the pump lifts water up the centre and over the top,
   // it trickles back down inside, and the leaves grow toward the sun.
+  // Each group is only written when its value changed, so phones do the least work per frame.
   const draw = clamp(p / .35), fill = clamp((p - .28) / .1), rise = clamp((p - .36) / .18), drip = clamp((p - .52) / .08);
-  parts.draw.forEach(el => { el.style.strokeDashoffset = 1 - draw; });
-  parts.water.style.opacity = fill * .8;
-  parts.rise.forEach(el => { el.style.strokeDashoffset = 1 - rise; });
+  if (draw !== seen.draw) { seen.draw = draw; parts.draw.forEach(el => { el.style.strokeDashoffset = 1 - draw; }); }
+  if (fill !== seen.fill) { seen.fill = fill; parts.water.style.opacity = fill * .8; }
+  if (rise !== seen.rise) { seen.rise = rise; parts.rise.forEach(el => { el.style.strokeDashoffset = 1 - rise; }); }
   parts.drip.forEach(el => { el.style.opacity = drip * .9; el.style.strokeDashoffset = -p * 240; });
   parts.sun.style.opacity = clamp(p / .15);
   parts.rays.style.transform = `rotate(${p * 90}deg)`;
   parts.beam.style.opacity = clamp((p - .45) / .2);
-  parts.leaves.forEach((el, i) => { const g = clamp((p - .5 - i * .016) / .15); el.style.transform = `scale(${g})`; });
+  parts.leaves.forEach((el, i) => { const g = clamp((p - .5 - i * .015) / .15); if (g !== seen.leaves[i]) { seen.leaves[i] = g; el.style.transform = `scale(${g})`; } });
   const active = Math.min(parts.items.length - 1, Math.floor(p * parts.items.length));
-  parts.items.forEach((el, i) => el.classList.toggle('active', i === active));
+  if (active !== seen.active) { seen.active = active; parts.items.forEach((el, i) => el.classList.toggle('active', i === active)); }
   parts.bar.style.transform = `scaleX(${p})`;
 }
-let ticking = false;
+const seen = { leaves: [] };
+let ticking = false, lastP = -1;
 function onScroll() {
   document.body.classList.toggle('scrolled', scrollY > 140);
   if (reduced) return;
   // The drawing finishes one screen early; that last screen holds the finished tower before the page moves on.
-  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - 2 * innerHeight))); }
-  if (steps) { const r = steps.getBoundingClientRect(); steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
-  if (band) { const r = band.parentElement.getBoundingClientRect(); band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
+  // Only touch the DOM when something actually changed or is on screen.
+  if (tower) { const r = tower.getBoundingClientRect(); const p = clamp(-r.top / (r.height - 2 * innerHeight)); if (p !== lastP) { lastP = p; renderTower(p); } }
+  if (steps) { const r = steps.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
+  if (band) { const r = band.parentElement.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
 addEventListener('resize', onScroll);
@@ -74,10 +98,10 @@ if (igBtn) igBtn.addEventListener('click', () => {
   document.body.appendChild(s);
 });
 
-// Translations, one key per line in page order. English is read from the page itself.
-// Brand and app names (WhatsApp, Instagram, UAS, RAWE, NSS) stay as written; a native speaker should review each language.
-const T = {
-  kn: { // Kannada
+// Translations, one key per line in page order. English is read from the page itself.
+// Brand and app names (WhatsApp, Instagram, UAS, RAWE, NSS) stay as written; a native speaker should review each language.
+const T = {
+  kn: { // Kannada
     skip: 'ವಿಷಯಕ್ಕೆ ಹೋಗಿ',
     top_loc: 'ಬೆಳಗಾವಿ, ಕರ್ನಾಟಕ',
     nav_tower: 'ಟವರ್',
@@ -183,9 +207,9 @@ const T = {
     a7: 'ಹೌದು. ವ್ಯಾಪಾರಗಳು ಮತ್ತು ವಾಣಿಜ್ಯ ಬೆಳೆಗಾರರಿಗೆ ಹೈಡ್ರೋಪೋನಿಕ್ ಘಟಕಗಳನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಿ ಸ್ಥಾಪಿಸುತ್ತೇವೆ.',
     nf_title: 'ಈ ಪುಟ ಸಿಗಲಿಲ್ಲ',
     nf_text: 'ನೀವು ಹುಡುಕುತ್ತಿರುವ ಪುಟ ಸ್ಥಳಾಂತರಗೊಂಡಿರಬಹುದು ಅಥವಾ ಇಲ್ಲದಿರಬಹುದು.',
-    nf_home: 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ'
-  },
-  hi: { // Hindi
+    nf_home: 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ'
+  },
+  hi: { // Hindi
     skip: 'सामग्री पर जाएँ',
     top_loc: 'बेलगावी, कर्नाटक',
     nav_tower: 'टावर',
@@ -291,9 +315,9 @@ const T = {
     a7: 'हाँ। हम व्यवसायों और व्यावसायिक किसानों के लिए हाइड्रोपोनिक फ़ार्म डिज़ाइन करके लगाते हैं।',
     nf_title: 'यह पेज नहीं मिला',
     nf_text: 'आप जो पेज ढूँढ रहे हैं, वह हटाया या बदला गया हो सकता है।',
-    nf_home: 'होम पेज पर लौटें'
-  },
-  mr: { // Marathi
+    nf_home: 'होम पेज पर लौटें'
+  },
+  mr: { // Marathi
     skip: 'मुख्य मजकुराकडे जा',
     top_loc: 'बेळगावी, कर्नाटक',
     nav_tower: 'टॉवर',
@@ -399,8 +423,8 @@ const T = {
     a7: 'हो. आम्ही व्यवसाय आणि व्यावसायिक उत्पादकांसाठी हायड्रोपोनिक फार्म डिझाइन करून उभारतो.',
     nf_title: 'हे पान सापडले नाही',
     nf_text: 'तुम्ही शोधत असलेले पान हलवले गेले असेल किंवा आता अस्तित्वात नसेल.',
-    nf_home: 'मुखपृष्ठावर परत जा'
-  }
+    nf_home: 'मुखपृष्ठावर परत जा'
+  }
 };
 const nodes = document.querySelectorAll('[data-i18n]');
 const en = [...nodes].map(n => n.innerHTML);
