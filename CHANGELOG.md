@@ -2,6 +2,15 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: New logo, hero and UAS stamp
+
+- New logo cut out from the brand banner: the towers, water and leaves without the background, in a light version for dark surfaces and a navy version for light ones. The header shows the mark beside the name; the footer shows the full logo with HYDROTONIC below. New favicon from the same mark.
+- Hero is now one clean Unsplash photo of lettuce growing in a vertical hydroponic system, replacing the terrace photo.
+- Contact section brings back the grower holding a seedling tray in a shade-net nursery.
+- The University of Agricultural Sciences, Dharwad emblem now appears as a stamp wherever the founder's B.Sc. (Hons.) is mentioned: the Education card and portrait on About, the B.Sc. stat, the homepage pillar and the founder teaser.
+- About hero keeps the covered tower farm photo but blurs, desaturates and vignettes everything around the towers.
+- Removed four images no page used anymore.
+
 ## 2026-10-23: Merge rule
 
 - Pull requests no longer need an approval; Aatif or the owner can merge once the Site checks job passes. Direct pushes, deletions and force pushes to `main` stay blocked.
