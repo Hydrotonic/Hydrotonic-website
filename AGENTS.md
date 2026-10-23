@@ -11,7 +11,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 
 ## Changes go through pull requests
 
-- `main` is protected. Never push to it directly: work on a branch, open a pull request, and wait for the repository owner (the Hydrotonic account) to approve it before merging.
+- `main` is protected. Never push to it directly: work on a branch and open a pull request. No approval is required (the ruleset sets required approvals to 0), so Aatif or the owner can merge once the "Site checks" job passes. Deletions and force pushes to `main` stay blocked.
 - The "Site checks" GitHub Action (`.github/workflows/site-checks.yml`) runs `scripts/check_site.py` on every pull request and must pass. Keep its actions pinned to full commit SHAs and its permissions read-only.
 
 ## Before every pull request
@@ -32,14 +32,14 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 - Never publish the full street address, building name or a map pin. Location is "Belagavi, Karnataka" only.
 - Instagram and LinkedIn stay labelled in the top bar of every page.
 - The enquiry form keeps its required consent checkbox and the link to the Privacy Notice. If data handling changes (new form tool, analytics, cookies), update `privacy.html` first.
-- Third-party embeds that set cookies (Instagram) load only after the visitor clicks.
+- The site loads no third-party embeds. If one is ever added and it sets cookies (for example Instagram), it must load only after the visitor clicks, and `privacy.html` must say so.
 - Keep the Content Security Policy meta tag on every page. No inline JavaScript or `on...=` handlers; JSON-LD is the only inline script. Add a new external domain to the CSP only when a feature needs it.
 - Every `target="_blank"` link has `rel="noopener"`.
 - Never commit passwords, tokens or the brother's private details.
 
 ## Design
 
-- Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm dark teal and near-black surfaces, one green accent (`#4db748`), gradient headline text, small tag labels above headings, pill buttons.
+- Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), gradient headline text, small tag labels above headings, pill buttons.
 - Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
 - Font: Montserrat (400, 500, 600) only.
 - The homepage tells one story in three short chapters: 01 who we are, 02 the tower and how we install it, 03 what we sell. Keep it short; longer content belongs on About or FAQ.

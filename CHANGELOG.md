@@ -2,6 +2,11 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Merge rule
+
+- Pull requests no longer need an approval; Aatif or the owner can merge once the Site checks job passes. Direct pushes, deletions and force pushes to `main` stay blocked.
+- AGENTS.md updated to match, with the olive palette and the no-embeds rule corrected.
+
 ## 2026-10-23: Hydrotonic's own photos and the founder portrait
 
 - Replaced the stock photos with Hydrotonic's own: rooftop and covered tower farms (hero and About, softened so the build layout is not readable), coriander towers, lettuce, spinach, tomato and coriander in net pots, and roots. One Unsplash photo remains (the farmer portrait in the homepage band).
