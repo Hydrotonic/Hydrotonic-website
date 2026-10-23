@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Founder strip as a bridge
+
+- The founder teaser on the homepage is no longer a boxed card. It is a quiet strip: his photo with "Meet the founder" (now jumping straight to the founder section on About), a thin divider, then three short lines: Founded in Belagavi by, his name, and his degree. It stacks and centres on phones.
+- The farmer photo above now fades into the strip and the contact photo below rises out of it, with no seam in either theme. The UAS emblem is no longer shown in this strip.
+- Translations: the one long sentence is split into the three lines in Kannada, Hindi and Marathi.
+
 ## 2026-10-23: Design polish
 
 - The language menu and the form's "Interested in" list now open as a rounded panel in the site's colours, with readable options and a green tick on the current choice. Before, the options were dark text on a dark square list. Browsers without the new styling keep their own list, now with readable colours.
