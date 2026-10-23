@@ -53,7 +53,8 @@ let ticking = false;
 function onScroll() {
   document.body.classList.toggle('scrolled', scrollY > 140);
   if (reduced) return;
-  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - innerHeight))); }
+  // The drawing finishes one screen early; that last screen holds the finished tower before the page moves on.
+  if (tower) { const r = tower.getBoundingClientRect(); renderTower(clamp(-r.top / (r.height - 2 * innerHeight))); }
   if (steps) { const r = steps.getBoundingClientRect(); steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
   if (band) { const r = band.parentElement.getBoundingClientRect(); band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
 }
@@ -84,7 +85,7 @@ const T = {
     about_eyebrow: 'ನಮ್ಮ ಬಗ್ಗೆ',
     nav_faq: 'ಪ್ರಶ್ನೆಗಳು',
     nav_contact: 'ಸಂಪರ್ಕಿಸಿ',
-    get_quote: 'ದರಪಟ್ಟಿ ಪಡೆಯಿರಿ',
+    get_quote: 'ದರ ಕೇಳಿ',
     cta_wa: 'ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಮಾತನಾಡಿ',
     hero_title: 'ಭಾರತದಲ್ಲಿ ಸುಸ್ಥಿರ ಕೃಷಿಗೆ ಹೊಸ ರೂಪ',
     hero_short: 'ನಿಮ್ಮಲ್ಲಿರುವ ಜಾಗದಲ್ಲೇ ತಾಜಾ ಸೊಪ್ಪು ಬೆಳೆಯುವ ಹೈಡ್ರೋಪೋನಿಕ್ ಟವರ್‌ಗಳು.',
