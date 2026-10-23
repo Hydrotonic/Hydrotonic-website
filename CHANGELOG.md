@@ -2,6 +2,13 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Brighter About hero, greens band, closer founder portrait
+
+- About hero: the dark treatment is gone. The towers now sit in a bright, softly glowing centre with blurred edges and a light vignette, and the overlay only darkens behind the heading and the top bar.
+- The About page ends on a new photo band of lettuce growing on vertical towers, cropped to leaves only (no tower bases, roof or logos) with soft, blurred edges.
+- Founder portrait zoomed in to head and shoulders, and the UAS stamp removed from it. On the homepage teaser the UAS badge now sits under his photo instead of on it.
+- About footer credit reads "Most photos by Hydrotonic".
+
 ## 2026-10-23: New logo, hero and UAS stamp
 
 - New logo cut out from the brand banner: the towers, water and leaves without the background, in a light version for dark surfaces and a navy version for light ones. The header shows the mark beside the name; the footer shows the full logo with HYDROTONIC below. New favicon from the same mark.
