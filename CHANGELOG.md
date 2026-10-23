@@ -2,6 +2,10 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Link preview image
+
+- Pasting hydrotonic.org (home, About or FAQ) into WhatsApp, LinkedIn, Facebook or X now shows the Hydrotonic brand banner (`img/og-share.jpg`, 1200x630, 75 KB). It replaces the three different preview images.
+
 ## 2026-10-23: Brighter About hero, greens band, closer founder portrait
 
 - About hero: the dark treatment is gone. The towers now sit in a bright, softly glowing centre with blurred edges and a light vignette, and the overlay only darkens behind the heading and the top bar.
