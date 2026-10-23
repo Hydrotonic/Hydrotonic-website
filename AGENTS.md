@@ -43,6 +43,8 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 
 - Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), solid headings (no gradient text), pill buttons.
 - Header: sentence case throughout (the name reads "Hydrotonic"). Links to sections of the homepage come first, then a thin divider, then links to other pages (About, FAQ) with a small arrow icon. "Get a quote" is the only filled button and sits at the far right, on phones too.
+- Buttons: one filled primary style, `btn-brand` (green, from the `--cta` token), for the main action: Get a quote, Send enquiry, Back to the homepage. WhatsApp buttons in the page use the light pill (`btn-light`); secondary actions use outlines (`btn-outline` on photos, `btn-line` on surfaces). Only the floating WhatsApp button uses WhatsApp's own green. Use palette colours only; no stray greys or blues.
+- Dropdowns (the language menu and form selects) open as a rounded panel in the site's colours via `appearance: base-select` where supported; elsewhere options must still be readable (surface background, strong text). The header logo mark is 46px tall on desktop and 34px on phones.
 - Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
 - Font: Montserrat (400, 500, 600) only.
 - The homepage tells one story in order: who we are, the tower and how we install it, what we sell. Keep it short; longer content belongs on About or FAQ.

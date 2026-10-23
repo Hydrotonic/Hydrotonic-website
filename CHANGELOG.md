@@ -2,6 +2,14 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Design polish
+
+- The language menu and the form's "Interested in" list now open as a rounded panel in the site's colours, with readable options and a green tick on the current choice. Before, the options were dark text on a dark square list. Browsers without the new styling keep their own list, now with readable colours.
+- Larger logo in the header and menu (46px on desktop, 34px on phones) so the towers, water and leaves read; the header still fits from 320 to 1440px in all four languages.
+- One primary button style: Get a quote, Send enquiry and the Back buttons on the 404 and Privacy pages are now the same solid green. The 404 and Privacy buttons had no style before.
+- Palette fixes: the hero's WhatsApp pill and the video play button used a stray grey-blue; the menu's WhatsApp button used WhatsApp green. All now use the site palette (the floating WhatsApp button keeps WhatsApp green).
+- Privacy and 404 pages: language and theme stay in the header on phones (those pages have no menu), and their short footer no longer has an empty band above it.
+
 ## 2026-10-23: Cleaner header
 
 - Removed the strip above the header (phone, email, location, Instagram, LinkedIn). Instagram and LinkedIn are still linked in the menu, the contact section and the footer; the Privacy and 404 footers now link them too.
