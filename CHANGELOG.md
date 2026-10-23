@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: One contact row for products
+
+- The four product cards no longer each carry an "Enquire on WhatsApp" link; they show just the photo and the name.
+- One row under the cards offers "Enquire on WhatsApp" (opens WhatsApp with a short product message) and "Call" (+91 74833 06330), in the same pill styles as the other button pairs.
+- Translations: the WhatsApp label lost its arrow, and "Call" is added in Kannada, Hindi and Marathi.
+
 ## 2026-10-23: Founder strip as a bridge
 
 - The founder teaser on the homepage is no longer a boxed card. It is a quiet strip: his photo with "Meet the founder" (now jumping straight to the founder section on About), a thin divider, then three short lines: Founded in Belagavi by, his name, and his degree. It stacks and centres on phones.
