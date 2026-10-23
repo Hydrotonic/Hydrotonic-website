@@ -3,7 +3,7 @@
   --font: Montserrat, "Noto Sans Kannada", "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --bg: #1d2a20; --bg-2: #182419; --surface: #243327; --surface-2: #2b3c2e; --line: rgba(214, 232, 200, .11);
   --ink: #dfe8d8; --muted: #a8b6a0; --strong: #ffffff; --green: #7cc457; --teal: #2a4a2f;
-  --pill: #e2ecd6; --pill-ink: #1e3a24; --tag: rgba(124, 196, 87, .13);
+  --pill: #e2ecd6; --pill-ink: #1e3a24; --cta: #7cc457; --cta-ink: #0d1a0f; --tag: rgba(124, 196, 87, .13);
   --glow: radial-gradient(circle at 50% 0%, rgba(124, 196, 87, .13), transparent 62%);
   --nav-solid: rgba(29, 42, 32, .88); --hero-end: #1d2a20; --wa: #25d366; --r: 14px;
   color-scheme: dark;
@@ -11,7 +11,7 @@
 :root[data-theme="light"] {
   --bg: #f1f5ea; --bg-2: #e6eddc; --surface: #ffffff; --surface-2: #f7faf2; --line: rgba(30, 58, 36, .13);
   --ink: #263a2b; --muted: #5c6f5d; --strong: #1e3a24; --green: #4a8a2a; --teal: #2a4a2f;
-  --pill: #1e3a24; --pill-ink: #ffffff; --tag: rgba(74, 138, 42, .1);
+  --pill: #1e3a24; --pill-ink: #ffffff; --cta: #2f6b1c; --cta-ink: #ffffff; --tag: rgba(74, 138, 42, .1);
   --glow: radial-gradient(circle at 50% 0%, rgba(74, 138, 42, .1), transparent 62%);
   --nav-solid: rgba(241, 245, 234, .92); --hero-end: #1e3a24;
   color-scheme: light;
@@ -37,7 +37,7 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .btn-light { background: var(--pill); color: var(--pill-ink); }
 .btn-outline { border-color: rgba(255, 255, 255, .55); color: #fff; background: transparent; }
 .btn-line { border-color: var(--line); color: var(--ink); background: var(--surface); }
-.btn-wa { background: var(--wa); color: #06210f; }
+.btn-brand { background: var(--cta); color: var(--cta-ink); font-weight: 600; }
 .link { color: var(--green); font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 200; background: var(--pill); color: var(--pill-ink); padding: 12px 18px; border-radius: 10px; text-decoration: none; }
@@ -53,7 +53,7 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
 .page-sub .nav { background: var(--bg); color: var(--strong); border-bottom: 1px solid var(--line); }
 .brand { display: flex; flex: none; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; font-weight: 600; font-size: 1.12rem; letter-spacing: .01em; }
-.brand img { height: 38px; width: auto; }
+.brand img { height: 46px; width: auto; }
 .brand .mark-navy { display: none; }
 :root[data-theme="light"] .scrolled .nav .mark-light, :root[data-theme="light"] .page-sub .nav .mark-light, :root[data-theme="light"] .menu .mark-light { display: none; }
 :root[data-theme="light"] .scrolled .nav .mark-navy, :root[data-theme="light"] .page-sub .nav .mark-navy, :root[data-theme="light"] .menu .mark-navy { display: block; }
@@ -66,20 +66,21 @@ footer .foot-logo img { height: auto; width: 170px; }
 .nav-links a:hover { opacity: 1; color: var(--green); }
 .tools { display: flex; align-items: center; gap: 10px; }
 .lang-select { font: 500 .85rem var(--font); min-height: 44px; padding: 8px 10px; border-radius: 500px; border: 1px solid rgba(255, 255, 255, .25); background: rgba(0, 0, 0, .25); color: inherit; }
-.lang-select option { color: #1e3a24; }
+.lang-select option, form select option { background: var(--surface); color: var(--strong); }
 .theme-btn, .menu-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; }
 .theme-btn .sun { display: block; } .theme-btn .moon { display: none; }
 :root[data-theme="light"] .theme-btn .sun { display: none; } :root[data-theme="light"] .theme-btn .moon { display: block; }
-.quote { min-height: 44px; padding: 12px 22px; margin-left: 6px; background: var(--green); color: #0d1a0f; font-weight: 600; }
-:root[data-theme="light"] .quote { background: #2f6b1c; color: #fff; }
+.quote { min-height: 44px; padding: 12px 22px; margin-left: 6px; }
 .menu-btn { display: none; }
 @media (max-width: 1020px) {
   .nav-links, .nav .lang-select, .nav .theme-btn { display: none; }
+  /* Pages without the menu (Privacy, 404) keep language and theme in the header. */
+  .nav .tools:not(:has(.menu-btn)) .lang-select { display: inline-flex; } .nav .tools:not(:has(.menu-btn)) .theme-btn { display: grid; }
   .menu-btn { display: grid; }
   .nav .wrap { height: 68px; }
   .quote { padding: 10px 12px; font-size: .8rem; margin-left: 0; }
   .brand { font-size: .92rem; gap: 7px; }
-  .brand img { height: 28px; }
+  .brand img { height: 34px; }
 }
 .quote { white-space: nowrap; }
 @media (max-width: 359px) { .nav .brand { font-size: 0; gap: 0; } }
@@ -116,7 +117,7 @@ footer .foot-logo img { height: auto; width: 170px; }
 .hero h1 { font-size: clamp(2.3rem, 7.4vw, 4.4rem); max-width: 15ch; color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, .45); }
 .hero p { font-size: clamp(1.02rem, 2.6vw, 1.18rem); max-width: 40ch; color: #f4f8ef; font-weight: 500; text-shadow: 0 1px 12px rgba(0, 0, 0, .55); margin: 0 0 30px; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.hero .btn-light { background: #dbe3e4; color: #1e3a24; }
+.hero .btn-light { background: #e2ecd6; color: #1e3a24; }
 @media (max-width: 560px) { .hero .ctas { flex-direction: column; width: 100%; max-width: 340px; } }
 
 /* ---------- Chapter 01: what Hydrotonic is ---------- */
@@ -228,7 +229,7 @@ footer .foot-logo img { height: auto; width: 170px; }
 .photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
 @media (max-width: 900px) { .photo img { aspect-ratio: 4/3; } }
 .play { position: absolute; left: 16px; bottom: 16px; right: 16px; display: flex; align-items: center; gap: 12px; background: rgba(2, 2, 2, .62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; padding: 10px 16px 10px 10px; border-radius: 500px; text-decoration: none; font-weight: 500; font-size: .92rem; }
-.play i { width: 40px; height: 40px; border-radius: 50%; background: #dbe3e4; display: grid; place-items: center; flex: none; }
+.play i { width: 40px; height: 40px; border-radius: 50%; background: #e2ecd6; display: grid; place-items: center; flex: none; }
 .play svg { width: 16px; height: 16px; fill: #1e3a24; margin-left: 2px; }
 .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
 @media (max-width: 560px) { .checks { grid-template-columns: 1fr; } }
@@ -329,6 +330,8 @@ footer .brand { color: #fff; margin-bottom: 12px; }
 .social a:hover { border-color: var(--green); color: #fff; }
 .bottom { border-top: 1px solid #223024; margin-top: 48px; padding: 8px 72px 8px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px 20px; font-size: .82rem; }
 .bottom a { text-decoration: underline; display: inline-block; padding: 12px 0; }
+/* Short pages (Privacy, 404) have only the bottom row: no empty band above it. */
+footer:not(:has(.cols)) { padding-top: 0; } footer:not(:has(.cols)) .bottom { margin-top: 0; border-top: 0; }
 
 /* ---------- Floating WhatsApp ---------- */
 .wa-float { position: fixed; right: 16px; bottom: 16px; z-index: 40; width: 56px; height: 56px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; box-shadow: 0 8px 22px rgba(0, 0, 0, .35); }
@@ -381,3 +384,18 @@ footer .brand { color: #fff; margin-bottom: 12px; }
 html:is([lang="kn"], [lang="hi"], [lang="mr"]) body { line-height: 1.75; }
 html:is([lang="kn"], [lang="hi"], [lang="mr"]) :is(h1, h2, h3) { line-height: 1.4; letter-spacing: 0; }
 html:is([lang="kn"], [lang="hi"], [lang="mr"]) .btn { line-height: 1.35; }
+
+/* ---------- Dropdowns: a rounded panel in the site's colours (Chrome and Edge); other browsers keep their own list ---------- */
+@supports (appearance: base-select) {
+  .lang-select, form select, .lang-select::picker(select), form select::picker(select) { appearance: base-select; }
+  .lang-select, form select { display: inline-flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; }
+  .lang-select { padding: 8px 12px 8px 16px; }
+  .lang-select::picker-icon, form select::picker-icon { color: currentColor; opacity: .7; transition: rotate .2s; }
+  .lang-select:open::picker-icon, form select:open::picker-icon { rotate: 180deg; }
+  .lang-select::picker(select), form select::picker(select) { margin-block: 8px; padding: 6px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--strong); box-shadow: 0 18px 40px rgba(0, 0, 0, .28); }
+  .lang-select::picker(select) { min-width: 150px; }
+  .lang-select option, form select option { min-height: 44px; padding: 10px 14px; border-radius: 10px; background: transparent; color: var(--strong); font: 500 .92rem var(--font); }
+  .lang-select option:is(:hover, :focus-visible), form select option:is(:hover, :focus-visible) { background: var(--tag); outline: none; }
+  .lang-select option:checked, form select option:checked { color: var(--green); font-weight: 600; }
+  .lang-select option::checkmark, form select option::checkmark { order: 1; margin-left: auto; color: var(--green); }
+}
