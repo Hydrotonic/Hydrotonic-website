@@ -48,7 +48,7 @@ if "—" in js: failures.append("assets/site.js: em dash in translations")
 # Every data-i18n key used on a page has a Kannada and a Hindi entry.
 keys = set()
 for s in pages.values(): keys |= set(re.findall(r'data-i18n="([^"]+)"', s))
-for lang in ["kn", "hi"]:
+for lang in ["kn", "hi", "mr"]:
     block = re.search(lang + r":\s*\{(.*?)\n  \}", js, re.S)
     have = set(re.findall(r"(\w+):\s*'", block.group(1))) if block else set()
     missing = sorted(keys - have)

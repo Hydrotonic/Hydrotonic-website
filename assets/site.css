@@ -1,5 +1,6 @@
 /* Hydrotonic. Olive-green palette. Dark is the default look; light is opt-in via the theme button. */
 :root {
+  --font: Montserrat, "Noto Sans Kannada", "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --bg: #1d2a20; --bg-2: #182419; --surface: #243327; --surface-2: #2b3c2e; --line: rgba(214, 232, 200, .11);
   --ink: #dfe8d8; --muted: #a8b6a0; --strong: #ffffff; --green: #7cc457; --teal: #2a4a2f;
   --pill: #e2ecd6; --pill-ink: #1e3a24; --tag: rgba(124, 196, 87, .13);
@@ -18,7 +19,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body { margin: 0; font: 400 16px/1.6 Montserrat, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Kannada", "Noto Sans Devanagari", sans-serif; color: var(--ink); background: var(--bg); overflow-x: hidden; }
+body { margin: 0; font: 400 16px/1.6 var(--font); color: var(--ink); background: var(--bg); overflow-x: hidden; }
 img, svg { max-width: 100%; display: block; }
 img { height: auto; }
 a { color: inherit; }
@@ -31,7 +32,7 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .lead { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
 .center { text-align: center; } .center .lead { margin-left: auto; margin-right: auto; }
 .ico { width: 1.25em; height: 1.25em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 16px 30px; border-radius: 500px; font: 500 .95rem/1 Montserrat, system-ui, sans-serif; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .2s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 16px 30px; border-radius: 500px; font: 500 .95rem/1 var(--font); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .2s; }
 .btn:hover { transform: translateY(-2px); }
 .btn-light { background: var(--pill); color: var(--pill-ink); }
 .btn-outline { border-color: rgba(255, 255, 255, .55); color: #fff; background: transparent; }
@@ -68,7 +69,7 @@ footer .foot-logo img { height: auto; width: 170px; }
 .nav-links a { text-decoration: none; color: inherit; opacity: .85; font-size: .93rem; font-weight: 500; padding: 12px 0; }
 .nav-links a:hover { opacity: 1; color: var(--green); }
 .tools { display: flex; align-items: center; gap: 10px; }
-.lang-select { font: 500 .85rem Montserrat, sans-serif; min-height: 44px; padding: 8px 10px; border-radius: 500px; border: 1px solid rgba(255, 255, 255, .25); background: rgba(0, 0, 0, .25); color: inherit; }
+.lang-select { font: 500 .85rem var(--font); min-height: 44px; padding: 8px 10px; border-radius: 500px; border: 1px solid rgba(255, 255, 255, .25); background: rgba(0, 0, 0, .25); color: inherit; }
 .lang-select option { color: #1e3a24; }
 .theme-btn, .menu-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; }
 .theme-btn .sun { display: block; } .theme-btn .moon { display: none; }
@@ -83,6 +84,8 @@ footer .foot-logo img { height: auto; width: 170px; }
   .brand { font-size: .85rem; letter-spacing: .06em; gap: 8px; }
   .brand img { height: 32px; }
 }
+/* On phones the name needs the room; the floating WhatsApp button, the hero and the menu cover enquiries. */
+@media (max-width: 480px) { .nav .quote { display: none; } }
 @media (max-width: 345px) { .nav .brand { font-size: 0; gap: 0; } }
 .quote { white-space: nowrap; }
 .scrolled .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--nav-solid); color: var(--strong); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); animation: drop .35s ease; }
@@ -306,7 +309,7 @@ details p { margin: 0 0 20px; color: var(--muted); }
 form label { display: block; font-size: .85rem; margin: 16px 0 6px; color: var(--muted); }
 form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
 @media (max-width: 560px) { form .row { grid-template-columns: 1fr; } }
-form input, form select, form textarea { width: 100%; font: 400 16px Montserrat, system-ui, sans-serif; min-height: 50px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--strong); }
+form input, form select, form textarea { width: 100%; font: 400 16px var(--font); min-height: 50px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--strong); }
 form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--green); outline-offset: 0; }
 form .consent { display: flex; gap: 12px; align-items: flex-start; margin-top: 18px; font-size: .85rem; color: var(--muted); }
 form .consent input { width: 22px; min-height: 22px; height: 22px; margin-top: 1px; flex: none; accent-color: var(--green); }
@@ -377,3 +380,8 @@ footer .brand { color: #fff; margin-bottom: 12px; }
 .edu .uas-stamp { right: 18px; top: 50%; margin-top: -42px; }
 .stat b.with-badge { display: flex; }
 @media (max-width: 560px) { .facts-list .edu { padding-right: 20px; } .edu .uas-stamp { width: 52px; height: 52px; top: 10px; margin-top: 0; right: 12px; } .edu h3 { min-height: 44px; padding-right: 56px; } }
+
+/* ---------- Kannada, Hindi and Marathi: taller lines so vowel signs and conjuncts never touch, no negative tracking ---------- */
+html:is([lang="kn"], [lang="hi"], [lang="mr"]) body { line-height: 1.75; }
+html:is([lang="kn"], [lang="hi"], [lang="mr"]) :is(h1, h2, h3) { line-height: 1.4; letter-spacing: 0; }
+html:is([lang="kn"], [lang="hi"], [lang="mr"]) .btn { line-height: 1.35; }

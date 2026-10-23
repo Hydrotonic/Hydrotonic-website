@@ -2,6 +2,15 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Marathi, and a full language pass
+
+- Added Marathi (मराठी) to the language menu on every page, with every string translated. The site check now requires Kannada, Hindi and Marathi for every key.
+- Reviewed the Kannada and Hindi text: the university is now named the same way everywhere, "Fresh Produce" reads as fresh greens and vegetables in Kannada, and headings match the English punctuation.
+- The founder's name on About and the footer photo credits are now translated. The FAQ footer no longer credits photos it does not have.
+- Kannada and Devanagari now render in Noto Sans Kannada and Noto Sans Devanagari, matched to Montserrat, on every phone instead of whatever font the phone has. Buttons, the language menu and form fields use the same font stack. These languages get taller line spacing so vowel signs and conjuncts never touch.
+- The translation file is rewritten one string per line, in page order, so a native speaker can review it.
+- On phones the "Get a quote" button is hidden in the top bar; it was colliding with the Hydrotonic name (in English too, and more in Kannada). The floating WhatsApp button, the hero and the menu still offer contact.
+
 ## 2026-10-23: Less text, readable photos, setup diagram
 
 - Text on photos (homepage hero, the farmer band, contact, About hero and the About band) is now solid white with a soft shadow, over a dark overlay behind the text. In light mode the contact and band overlays no longer fade to the pale page colour under the heading.
