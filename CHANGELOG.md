@@ -2,6 +2,10 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: The Tower
+
+- The menu link now reads "The Tower", capitalised as the product's name, in the header, the phone menu and the footer.
+
 ## 2026-10-23: Mobile pass
 
 - Lighter pages: the header logo was downloading about 350 KB (both colour versions, at desktop poster size) for a 46px mark; it is now 8 KB, and the version only used in light mode loads only when needed. The footer logo went from 195 KB to 25 KB and the UAS emblem from 224 KB to 29 KB, with no visible difference. The phone hero photo is 242 KB instead of 318 KB and is fetched first; the farmer and contact photos load phone-sized versions on phones.
