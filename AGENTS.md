@@ -39,10 +39,12 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 
 ## Design
 
-- Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), gradient headline text, small tag labels above headings, pill buttons.
+- Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), solid headings (no gradient text), pill buttons.
 - Mobile first: about 4 in 5 visitors use a phone. Design and review at 375px before desktop. Swipeable rails on phones, a full-screen `<dialog>` menu, and every tap target at least 44px.
 - Font: Montserrat (400, 500, 600) only.
-- The homepage tells one story in three short chapters: 01 who we are, 02 the tower and how we install it, 03 what we sell. Keep it short; longer content belongs on About or FAQ.
+- The homepage tells one story in order: who we are, the tower and how we install it, what we sell. Keep it short; longer content belongs on About or FAQ.
+- Less is more, and it must not look template-made: no eyebrow tags above headings, no numbered sections or badges (01, 02...), and no subtext under every card or step. One heading per section, at most one short line under it, and let photos, icons and diagrams carry the message.
+- Text on photos must stay readable in both themes: solid white with a soft shadow, over a dark overlay that sits behind the text itself. Never let an overlay fade into the page background where text sits.
 - Palette is olive green, not grey. Dark is the default theme; light is opt-in through the theme button. Colours come from the CSS variables in `assets/site.css`, and both themes must work.
 - Use Hydrotonic's own photos first (in `img/`). The founder does not want his tower design copied: prefer close-ups of plants, roots and net pots, and lush towers where leaves hide the build. Wide shots that show the full plumbing or frame layout may only appear blurred behind text. The one exception, at the owner's request, is the About hero: the covered farm with the towers in focus. Never use photos or video that show other people's faces without their consent.
 - The homepage hero is one clean stock photo of leafy greens growing hydroponically (the owner's choice: his own terrace shots read as cluttered). Keep it uncluttered and free of other companies' logos. Other stock tower photos are cropped to leaves only (no bases, plumbing, frames, roofs or logos).
