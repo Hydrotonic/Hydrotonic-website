@@ -2,6 +2,14 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-23: Less text, readable photos, setup diagram
+
+- Text on photos (homepage hero, the farmer band, contact, About hero and the About band) is now solid white with a soft shadow, over a dark overlay behind the text. In light mode the contact and band overlays no longer fade to the pale page colour under the heading.
+- Removed the template look: no eyebrow tags, no "01 · 02 · 03" section labels or product number badges, no gradient headings, no numbers in the mobile menu.
+- Cut the subtext: pillar descriptions, product descriptions, section leads, the swipe hint and the band sentence are gone. The tower steps are now one short line each that narrates the animation.
+- "And we set it up for you" is now a four-step icon diagram in the same line style as the tower: tell us about your space, we design it, we bring it and set it up, grow with our support.
+- Removed translation entries that no page uses anymore.
+
 ## 2026-10-23: Tower illustration redrawn after Hydrotonic's own towers
 
 - The "02 · The tower" animation now shows three single-tube towers on one reservoir pipe, like the logo and the founder's builds, instead of stacked boxes with an outside pipe.
