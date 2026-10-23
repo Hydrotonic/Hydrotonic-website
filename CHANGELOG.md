@@ -5,7 +5,7 @@ All notable changes to hydrotonic.org. Newest first.
 ## 2026-10-23: Hydrotonic's own photos and the founder portrait
 
 - Replaced the stock photos with Hydrotonic's own: rooftop and covered tower farms (hero and About, softened so the build layout is not readable), coriander towers, lettuce, spinach, tomato and coriander in net pots, and roots. One Unsplash photo remains (the farmer portrait in the homepage band).
-- Added the founder portrait to the About page and the homepage teaser, with the original background replaced by an olive backdrop. His face and clothing are unchanged.
+- Added a retouched founder portrait to the About page and the homepage teaser: a BiRefNet portrait cutout with edge colour cleanup, a green-toned grade, a lime rim light and light wrap, set against Hydrotonic's own coriander towers blurred into bokeh. His features are unchanged; only tone and background were edited.
 - The About page gallery now shows Hydrotonic's own photos instead of Instagram embeds, so the site no longer loads anything from Instagram. The Privacy Notice is updated to match.
 - The RAWE entry on the About page now describes the farmer awareness charts and demonstration models prepared in Shirahatti taluk, Gadag district.
 - Removed the old business-card product crops.
