@@ -2,6 +2,10 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: No install prompt
+
+- Phones no longer offer to install the site as an app. The manifest's `display` is now `browser`, so Chrome stops treating the site as an installable app (that prompt, and the "downloading" step that followed it, worried visitors). Home-screen icons and the browser bar colour are unchanged.
+
 ## 2026-10-28: Sky-blue theme
 
 - The site now uses the brand banner's sky blue as its default look: pale blue pages, navy text, one blue accent. Green is kept for the plants only (tower leaves, setup icons, product art).
