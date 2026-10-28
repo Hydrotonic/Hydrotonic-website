@@ -74,7 +74,9 @@ footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5p
 .quote { min-height: 44px; padding: 12px 22px; margin-left: 6px; }
 .menu-btn { display: none; }
 @media (max-width: 1020px) {
-  .nav-links, .nav .lang-select, .nav .theme-btn { display: none; }
+  .nav-links, .nav .quote { display: none; }
+  /* Phones keep language, theme and the menu in the header row; the quote button goes (the hero and the menu both offer contact). */
+  .nav .tools { gap: 6px; } .nav .tools .lang-select { width: 66px; padding: 4px 4px 4px 10px; font-size: .8rem; min-height: 40px; } .nav .tools .theme-btn { width: 40px; height: 40px; }
   /* Pages without the menu (Privacy, 404) keep language and theme in the header. */
   .nav .tools:not(:has(.menu-btn)) .lang-select { display: inline-flex; } .nav .tools:not(:has(.menu-btn)) .theme-btn { display: grid; }
   .menu-btn { display: grid; }
@@ -200,7 +202,7 @@ footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5p
 .tower-art .draw { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-opacity: .75; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .tower-art .accent { stroke: var(--water); stroke-opacity: 1; }
 .tower-art .water { fill: var(--water); opacity: 0; }
-.tower-art .leaf { fill: var(--green); } .tower-art .leaf2 { fill: color-mix(in srgb, var(--green) 72%, #1e3a24); }
+.tower-art .leaf { fill: var(--green); } .tower-art .leaf2 { fill: color-mix(in srgb, var(--green) 72%, #1e3a24); } .tower-art .leaf3 { fill: color-mix(in srgb, var(--green) 65%, #f4f8ef); }
 .tower-art .vein { fill: none; stroke: #fff; stroke-opacity: .45; stroke-width: .8; stroke-linecap: round; }
 .tower-art .root { fill: none; stroke: #e9dfc4; stroke-opacity: .75; stroke-width: .9; stroke-linecap: round; }
 .tower-art .roots { transform-box: fill-box; transform-origin: center top; transform: scale(0); }
@@ -460,7 +462,7 @@ html:has(.menu[open]) { overflow: hidden; }
   /* a.page shares a class name with the simple-page container (.page { padding }), so pin these links down. */
   .nav .subnav nav a { display: inline-flex; padding: 0; min-height: 40px; }
   .subnav nav .sep { display: none; }
-  .subnav .tools { flex: none; gap: 6px; }
+  .subnav .tools { display: none; }
   .subnav .lang-select { display: inline-flex; min-height: 38px; width: 78px; padding: 4px 6px 4px 10px; font-size: .78rem; }
   .subnav nav { gap: 16px; }
   .subnav .theme-btn { display: grid; width: 38px; height: 38px; }
