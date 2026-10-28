@@ -42,6 +42,7 @@ Claude Code, Codex and people follow the same rules here. Modelled on the rules 
 ## Design
 
 - Visual reference: verdantrobotics.com (aesthetic only; never copy its assets, copy or code). Calm olive-green surfaces, one green accent (`#7cc457` in dark mode, `#4a8a2a` in light), solid headings (no gradient text), pill buttons.
+- The burger menu lists Home (a `<details>` that opens Overview, The Tower, Products and Contact in a smaller list), About and FAQ. Keep section links out of the top level.
 - On phones the header has a second row (`.subnav`): About and FAQ only (so other pages are one tap away), with the language menu and theme button at the right. It hides once the page is scrolled.
 - The tower illustration is lettuce heads with small roots, a rounded header pipe, and a pump and filter in the reservoir; heads fill in in a fixed random order (seeded shuffle in `scripts/gen_tower.py`), not bottom to top. Labels in the drawing carry `data-i18n` keys.
 - Header: sentence case throughout (the name reads "Hydrotonic"), except "The Tower", which is capitalised as the product's name. Links to sections of the homepage come first, then a thin divider, then links to other pages (About, FAQ) with a small arrow icon. "Get a quote" is the only filled button and sits at the far right, on phones too.
