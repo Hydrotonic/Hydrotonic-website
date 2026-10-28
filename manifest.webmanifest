@@ -3,8 +3,8 @@
   "short_name": "Hydrotonic",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1d2a20",
-  "theme_color": "#1d2a20",
+  "background_color": "#eaf4fb",
+  "theme_color": "#eaf4fb",
   "icons": [
     {
       "src": "/img/icon-192.png",
