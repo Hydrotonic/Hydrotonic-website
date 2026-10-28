@@ -2,6 +2,13 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: Sky-blue theme
+
+- The site now uses the brand banner's sky blue as its default look: pale blue pages, navy text, one blue accent. Green is kept for the plants only (tower leaves, setup icons, product art).
+- Light is the default theme; the theme button switches to a navy dark mode built from the logo's colours. A visitor's saved choice still wins.
+- Every text and background pair in both themes measures at least 4.5:1 contrast.
+- Browser bar colour, web app manifest and home-screen icons match the new palette.
+
 ## 2026-10-28: Audit fixes
 
 - Light mode: links now use the darker green (5.9:1 contrast on the page colour instead of 3.8:1), so small link text meets the accessibility threshold. Dark mode was already fine.

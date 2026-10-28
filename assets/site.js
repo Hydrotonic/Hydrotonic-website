@@ -8,15 +8,15 @@ if (year) year.textContent = new Date().getFullYear();
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = v => Math.min(1, Math.max(0, v));
 
-// Light / dark toggle (dark is the default). Every .theme-btn on the page works.
+// Light / dark toggle (light is the default). Every .theme-btn on the page works.
 document.querySelectorAll('.theme-btn').forEach(b => b.addEventListener('click', () => {
-  root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   barColour();
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
 }));
 
 // The phone's address bar takes the page colour.
-function barColour() { const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = root.dataset.theme === 'light' ? '#f1f5ea' : '#1d2a20'; }
+function barColour() { const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = root.dataset.theme === 'dark' ? '#0f2439' : '#eaf4fb'; }
 barColour();
 
 // Pause the hero's slow drift when it is off screen, to save battery.
