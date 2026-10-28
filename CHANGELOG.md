@@ -2,6 +2,10 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: Logo without the tile
+
+- The light box behind the logo is gone. The transparent navy mark sits straight on the page; on dark surfaces a faint light halo keeps the towers readable, and in light mode it is plain.
+
 ## 2026-10-27: Visual pass
 
 - Logo back to its banner colours (navy towers, green leaves, blue water) on a small light tile in the header, menu and footer, in both themes.
