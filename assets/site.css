@@ -447,7 +447,7 @@ html:has(.menu[open]) { overflow: hidden; }
 .card .media.art { aspect-ratio: 16/10; background: var(--surface-2); display: grid; place-items: center; }
 .card .media.art svg { width: 100%; height: 100%; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .card .media.art .leaf { fill: var(--green); stroke: none; } .card .media.art .acc { stroke: var(--green); } .card .media.art .faint { stroke-opacity: .35; }
-.card .media.art .fill { fill: var(--tag); stroke: none; } .card .media.art .lbl { font: 600 22px var(--font); fill: var(--ink); stroke: none; }
+.card .media.art .fill { fill: var(--tag); stroke: none; } .card .media.art .petal { fill: var(--sun, #e3a21a); stroke: none; opacity: .9; } .card .media.art .lbl { font: 600 22px var(--font); fill: var(--ink); stroke: none; }
 .card .media.split { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; } .card .media.split img { aspect-ratio: 4/5; }
 
 /* ---------- Phone sub-nav: pages, language and theme under the header row ---------- */
@@ -460,7 +460,6 @@ html:has(.menu[open]) { overflow: hidden; }
   .subnav nav .sep { display: none; }
   .subnav .tools { flex: none; gap: 6px; }
   .subnav .lang-select { display: inline-flex; min-height: 38px; width: 78px; padding: 4px 6px 4px 10px; font-size: .78rem; }
-  .subnav nav a.page { order: -1; }
   .subnav nav { gap: 16px; }
   .subnav .theme-btn { display: grid; width: 38px; height: 38px; }
   .over .subnav { text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }

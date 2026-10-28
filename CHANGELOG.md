@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: Matching product art, fuller tower, simpler phone row
+
+- The four product cards now share one line-art style: towers, inputs, a crate of greens, and a microgreens tray with a flower. The two photos and the stock pair are retired from this row.
+- Tower heads have seven leaves and are larger, so the towers read as full.
+- The phone header row shows only About and FAQ beside the language and theme controls; the section links stay in the menu.
+
 ## 2026-10-28: Logo without the tile
 
 - The light box behind the logo is gone. The transparent navy mark sits straight on the page; on dark surfaces a faint light halo keeps the towers readable, and in light mode it is plain.
