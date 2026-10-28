@@ -104,6 +104,8 @@ const T = {
   kn: { // Kannada
     skip: 'ವಿಷಯಕ್ಕೆ ಹೋಗಿ',
     top_loc: 'ಬೆಳಗಾವಿ, ಕರ್ನಾಟಕ',
+    nav_home: 'ಮುಖಪುಟ',
+    home_top: 'ಅವಲೋಕನ',
     nav_tower: 'ಟವರ್',
     nav_products: 'ಉತ್ಪನ್ನಗಳು',
     about_eyebrow: 'ನಮ್ಮ ಬಗ್ಗೆ',
@@ -215,6 +217,8 @@ const T = {
   hi: { // Hindi
     skip: 'सामग्री पर जाएँ',
     top_loc: 'बेलगावी, कर्नाटक',
+    nav_home: 'होम',
+    home_top: 'अवलोकन',
     nav_tower: 'टावर',
     nav_products: 'उत्पाद',
     about_eyebrow: 'हमारे बारे में',
@@ -326,6 +330,8 @@ const T = {
   mr: { // Marathi
     skip: 'मुख्य मजकुराकडे जा',
     top_loc: 'बेळगावी, कर्नाटक',
+    nav_home: 'मुखपृष्ठ',
+    home_top: 'आढावा',
     nav_tower: 'टॉवर',
     nav_products: 'उत्पादने',
     about_eyebrow: 'आमच्याबद्दल',

@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: Phone menu and logo tap
+
+- On phones, tapping the logo opened About: the About and FAQ links in the header row carried the `page` class, which also styles the Privacy page's content padding, so their tap area reached up over the logo. Fixed; the logo now goes home.
+- The burger menu is Home, About and FAQ. Home opens a smaller list: Overview, The Tower, Products, Contact.
+- Facebook no longer overflows the menu's social row.
+
 ## 2026-10-28: Matching product art, fuller tower, simpler phone row
 
 - The four product cards now share one line-art style: towers, inputs, a crate of greens, and a microgreens tray with a flower. The two photos and the stock pair are retired from this row.
