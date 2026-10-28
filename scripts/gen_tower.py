@@ -11,20 +11,28 @@ import math, random
 f = lambda v: f"{round(v, 1):g}"
 
 # One lettuce leaf, base at (0,0), tip up, with a scalloped edge and a centre vein.
-LEAF = "M0 0c-5-3-8-9-7-15 1-5 4-9 7-12 3 3 6 7 7 12 1 6-2 12-7 15z"
-VEIN = "M0 0c0-6 0-12 0-20"
+# A broad lettuce leaf with a ruffled edge, base at (0,0), tip up.
+LEAF = "M0 0c-6-1-11-6-12-12-1-4 1-7 3-8-1-4 1-8 4-9 2-2 5-1 5 1 0-2 3-3 5-1 3 1 5 5 4 9 2 1 4 4 3 8-1 6-6 11-12 12z"
+VEIN = "M0 0c-1-7 0-14 1-22"
 
 def lettuce(x, y, side, s):
-    """A head of five overlapping leaves at (x, y). Side L/R grows outward and up; F fans up from a front cup."""
+    """A rosette of sixteen overlapping leaves at (x, y). Side L/R grows outward and up; F fans up from a front cup."""
+    # Outer ring of dark leaves, middle ring, then a small pale heart: a rosette seen from the side.
     if side == "L":
-        fan = [(-170, .8, 2), (-145, 1.05, 1), (-120, 1.25, 2), (-95, 1.35, 1), (-70, 1.25, 2), (-45, 1.05, 1), (-20, .8, 2)]
+        fan = [(-172, .85, 2), (-150, 1.05, 2), (-128, 1.2, 2), (-106, 1.25, 2), (-84, 1.2, 2), (-62, 1.05, 2), (-40, .85, 2), (-18, .7, 2),
+               (-140, .8, 1), (-115, .9, 1), (-90, .95, 1), (-65, .9, 1), (-40, .75, 1),
+               (-120, .5, 3), (-95, .55, 3), (-70, .5, 3)]
     elif side == "R":
-        fan = [(170, .8, 2), (145, 1.05, 1), (120, 1.25, 2), (95, 1.35, 1), (70, 1.25, 2), (45, 1.05, 1), (20, .8, 2)]
+        fan = [(172, .85, 2), (150, 1.05, 2), (128, 1.2, 2), (106, 1.25, 2), (84, 1.2, 2), (62, 1.05, 2), (40, .85, 2), (18, .7, 2),
+               (140, .8, 1), (115, .9, 1), (90, .95, 1), (65, .9, 1), (40, .75, 1),
+               (120, .5, 3), (95, .55, 3), (70, .5, 3)]
     else:
-        fan = [(-80, .8, 2), (-55, 1, 1), (-28, 1.2, 2), (0, 1.3, 1), (28, 1.2, 2), (55, 1, 1), (80, .8, 2)]
+        fan = [(-84, .8, 2), (-60, 1, 2), (-36, 1.15, 2), (-12, 1.2, 2), (12, 1.2, 2), (36, 1.15, 2), (60, 1, 2), (84, .8, 2),
+               (-50, .8, 1), (-25, .9, 1), (0, .95, 1), (25, .9, 1), (50, .8, 1),
+               (-25, .5, 3), (0, .55, 3), (25, .5, 3)]
     parts = []
     for rot, sc, cls in fan:
-        parts.append(f'<g transform="rotate({rot}) scale({f(sc * s)})"><path class="leaf{cls if cls == 2 else ""}" d="{LEAF}"/><path class="vein" d="{VEIN}"/></g>')
+        parts.append(f'<g transform="rotate({rot}) scale({f(sc * s)})"><path class="leaf{cls if cls != 1 else ""}" d="{LEAF}"/><path class="vein" d="{VEIN}"/></g>')
     return f'<g class="leaves grow"><g transform="translate({f(x)} {f(y)})">{"".join(parts)}</g></g>'
 
 def roots(x, y, side):
@@ -53,8 +61,8 @@ def tower(cx, w, top, rows):
 
 pattern = ["L", "F", "R"]
 c_out, c_grow = tower(130, 36, 62, [(pattern[i % 3], 86 + 34 * i) for i in range(9)])
-l_out, l_grow = tower(62, 32, 112, [(pattern[i % 3], 136 + 36 * i) for i in range(7)])
-r_out, r_grow = tower(198, 32, 112, [(pattern[(i + 2) % 3], 136 + 36 * i) for i in range(7)])
+l_out, l_grow = tower(62, 32, 112, [(s, 136 + 36 * i) for i, s in enumerate("LFLRLFL")])      # four heads face outward
+r_out, r_grow = tower(198, 32, 112, [(s, 136 + 36 * i) for i, s in enumerate("RFRLRFR")])
 grow = c_grow + l_grow + r_grow
 random.Random(11).shuffle(grow)                                   # fixed random order: heads come along all over the towers
 
