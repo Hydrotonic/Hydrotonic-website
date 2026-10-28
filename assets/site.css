@@ -54,8 +54,11 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .page-sub .nav { background: var(--bg); color: var(--strong); border-bottom: 1px solid var(--line); }
 .brand { display: flex; flex: none; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; font-weight: 600; font-size: 1.12rem; letter-spacing: .01em; }
 /* The mark keeps its navy, green and blue, as on the banner, on a small light tile that works in both themes. */
-.brand img { height: 50px; width: auto; padding: 4px 8px; box-sizing: border-box; background: #eaf3fa; border-radius: 12px; }
-footer .foot-logo img { height: auto; width: 190px; padding: 10px 14px; box-sizing: border-box; background: #eaf3fa; border-radius: 16px; }
+.brand img { height: 46px; width: auto; }
+/* On dark surfaces the navy towers get a faint light halo so they stay visible without a box behind them. */
+:root:not([data-theme="light"]) .brand img, .over:not(.scrolled) .brand img, .menu .brand img { filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .9)) drop-shadow(0 0 6px rgba(255, 255, 255, .35)); }
+:root[data-theme="light"] .scrolled .nav .brand img, :root[data-theme="light"] .page-sub .nav .brand img, :root[data-theme="light"] .menu .brand img { filter: none; }
+footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .9)) drop-shadow(0 0 8px rgba(255, 255, 255, .3)); }
 .nav-links { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 28px); }
 .nav-links a { display: inline-flex; align-items: center; gap: 5px; text-decoration: none; color: inherit; opacity: .85; font-size: .93rem; font-weight: 500; padding: 12px 0; }
 /* Sections of this page come first; links to other pages follow a divider and carry a small arrow. */
@@ -78,7 +81,7 @@ footer .foot-logo img { height: auto; width: 190px; padding: 10px 14px; box-sizi
   .nav .wrap { height: 68px; }
   .quote { padding: 10px 12px; font-size: .84rem; margin-left: 0; }
   .brand { font-size: .92rem; gap: 7px; }
-  .brand img { height: 40px; padding: 3px 6px; border-radius: 10px; }
+  .brand img { height: 36px; }
 }
 .quote { white-space: nowrap; }
 @media (max-width: 359px) { .nav .brand { font-size: 0; gap: 0; } }
