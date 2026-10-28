@@ -17,11 +17,11 @@ VEIN = "M0 0c0-6 0-12 0-20"
 def lettuce(x, y, side, s):
     """A head of five overlapping leaves at (x, y). Side L/R grows outward and up; F fans up from a front cup."""
     if side == "L":
-        fan = [(-160, .75, 2), (-125, 1.05, 1), (-90, 1.2, 2), (-55, 1.05, 1), (-20, .75, 2)]
+        fan = [(-170, .8, 2), (-145, 1.05, 1), (-120, 1.25, 2), (-95, 1.35, 1), (-70, 1.25, 2), (-45, 1.05, 1), (-20, .8, 2)]
     elif side == "R":
-        fan = [(160, .75, 2), (125, 1.05, 1), (90, 1.2, 2), (55, 1.05, 1), (20, .75, 2)]
+        fan = [(170, .8, 2), (145, 1.05, 1), (120, 1.25, 2), (95, 1.35, 1), (70, 1.25, 2), (45, 1.05, 1), (20, .8, 2)]
     else:
-        fan = [(-70, .8, 2), (-35, 1, 1), (0, 1.15, 2), (35, 1, 1), (70, .8, 2)]
+        fan = [(-80, .8, 2), (-55, 1, 1), (-28, 1.2, 2), (0, 1.3, 1), (28, 1.2, 2), (55, 1, 1), (80, .8, 2)]
     parts = []
     for rot, sc, cls in fan:
         parts.append(f'<g transform="rotate({rot}) scale({f(sc * s)})"><path class="leaf{cls if cls == 2 else ""}" d="{LEAF}"/><path class="vein" d="{VEIN}"/></g>')
