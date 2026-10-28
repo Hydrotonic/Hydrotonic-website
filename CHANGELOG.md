@@ -2,6 +2,13 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-28: Audit fixes
+
+- Light mode: links now use the darker green (5.9:1 contrast on the page colour instead of 3.8:1), so small link text meets the accessibility threshold. Dark mode was already fine.
+- Reveal-on-scroll is a touch quicker (0.55s, 22px) so sections feel more immediate on phones.
+- Removed seven image files no page uses (old product photos, the light logos, the retired seedling photo).
+- Added a README that points to AGENTS.md and explains how to preview and contribute.
+
 ## 2026-10-28: Phone menu and logo tap
 
 - On phones, tapping the logo opened About: the About and FAQ links in the header row carried the `page` class, which also styles the Privacy page's content padding, so their tap area reached up over the logo. Fixed; the logo now goes home.

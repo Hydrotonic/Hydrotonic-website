@@ -39,6 +39,8 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .btn-line { border-color: var(--line); color: var(--ink); background: var(--surface); }
 .btn-brand { background: var(--cta); color: var(--cta-ink); font-weight: 600; }
 .link { color: var(--green); font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+/* Light mode: the accent green is too pale for small text (3.8:1), so links use the darker CTA green (5.9:1). */
+:root[data-theme="light"] .link, :root[data-theme="light"] .menu-home .sub a:hover, :root[data-theme="light"] .nav-links a:hover { color: var(--cta); }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 200; background: var(--pill); color: var(--pill-ink); padding: 12px 18px; border-radius: 10px; text-decoration: none; }
 .skip-link:focus { top: 12px; }
@@ -370,7 +372,7 @@ footer:not(:has(.cols)) { padding-top: 0; } footer:not(:has(.cols)) .bottom { ma
 .page a:not(.btn) { color: var(--green); }
 
 /* ---------- Reveal on scroll (only when JS runs) ---------- */
-.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1); }
 .js .reveal.in { opacity: 1; transform: none; }
 .js .stagger > .reveal:nth-child(2) { transition-delay: .08s; }
 .js .stagger > .reveal:nth-child(3) { transition-delay: .16s; }
