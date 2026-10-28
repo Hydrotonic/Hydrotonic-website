@@ -2,6 +2,16 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-10-27: Visual pass
+
+- Logo back to its banner colours (navy towers, green leaves, blue water) on a small light tile in the header, menu and footer, in both themes.
+- Phones: a second header row with About and FAQ first, the section links, and the language and theme controls, so none of them hide in the menu. It folds away on scroll.
+- Tower animation: rounded header pipe with a highlight, lettuce heads instead of flat leaves, small roots inside the tubes, and a pump and filter in the reservoir with labels (translated). Heads now fill in across the towers in a fixed random order rather than bottom to top.
+- Products: the Inputs card is a line drawing of a net pot with cocopeat, a pump and nutrient bottles A and B; the Microgreens card pairs a microgreens tray with edible flowers (Unsplash).
+- The farmer band is about a third shorter.
+- About gallery: three new farm photos (lettuce head, spinach bunch, spinach with roots); the small tomato seedling photo is retired as a near duplicate.
+- Email is now hydrotonic.org@gmail.com everywhere, including the enquiry form and structured data. Facebook added to the menu, contact panel, footer and structured data.
+
 ## 2026-10-23: The Tower
 
 - The menu link now reads "The Tower", capitalised as the product's name, in the header, the phone menu and the footer.

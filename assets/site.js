@@ -51,7 +51,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 const tower = $('tower'), steps = document.querySelector('.steps'), band = document.querySelector('.band img');
 const parts = tower && {
   draw: tower.querySelectorAll('.draw'), rise: tower.querySelectorAll('.rise'), drip: tower.querySelectorAll('.drip'),
-  leaves: tower.querySelectorAll('.leaves'), water: tower.querySelector('.water'), sun: tower.querySelector('.sun'),
+  leaves: tower.querySelectorAll('.grow'), water: tower.querySelector('.water'), sun: tower.querySelector('.sun'),
   rays: tower.querySelector('.rays'), beam: tower.querySelector('.beam'), items: tower.querySelectorAll('.tw-step'), bar: tower.querySelector('.tw-bar i')
 };
 function renderTower(p) {
@@ -66,7 +66,7 @@ function renderTower(p) {
   parts.sun.style.opacity = clamp(p / .15);
   parts.rays.style.transform = `rotate(${p * 90}deg)`;
   parts.beam.style.opacity = clamp((p - .45) / .2);
-  parts.leaves.forEach((el, i) => { const g = clamp((p - .5 - i * .015) / .15); if (g !== seen.leaves[i]) { seen.leaves[i] = g; el.style.transform = `scale(${g})`; } });
+  parts.leaves.forEach((el, i) => { const g = clamp((p - .5 - i * (.3 / parts.leaves.length)) / .15); if (g !== seen.leaves[i]) { seen.leaves[i] = g; el.style.transform = `scale(${g})`; } });
   const active = Math.min(parts.items.length - 1, Math.floor(p * parts.items.length));
   if (active !== seen.active) { seen.active = active; parts.items.forEach((el, i) => el.classList.toggle('active', i === active)); }
   parts.bar.style.transform = `scaleX(${p})`;
@@ -124,6 +124,9 @@ const T = {
     tw2t: 'ಕೆಳಗಿನ ಪಂಪ್ ನೀರನ್ನು ಮೇಲಕ್ಕೆ ಎತ್ತುತ್ತದೆ',
     tw3t: 'ನೀರು ಬೇರುಗಳ ಮೂಲಕ ಕೆಳಗೆ ಹರಿಯುತ್ತದೆ',
     tw4t: 'ಮಣ್ಣು ಬೇಡ. ನೀರು, ಪೋಷಕಾಂಶ ಮತ್ತು ಬಿಸಿಲು ಸಾಕು.',
+    tw_pump: 'ಪಂಪ್',
+    tw_filter: 'ಫಿಲ್ಟರ್',
+    tw_water: 'ಪೋಷಕಾಂಶದ ನೀರು, ಮರುಬಳಕೆ',
     install_title: 'ಮತ್ತು ನಾವೇ ಸ್ಥಾಪಿಸಿಕೊಡುತ್ತೇವೆ',
     h1t: 'ನಿಮ್ಮ ಜಾಗದ ಬಗ್ಗೆ ತಿಳಿಸಿ',
     h2t: 'ನಾವು ನಿಮಗಾಗಿ ವಿನ್ಯಾಸ ಮಾಡುತ್ತೇವೆ',
@@ -232,6 +235,9 @@ const T = {
     tw2t: 'नीचे लगा पंप पानी ऊपर पहुँचाता है',
     tw3t: 'पानी जड़ों से होकर नीचे बहता है',
     tw4t: 'मिट्टी नहीं। बस पानी, पोषक तत्व और धूप।',
+    tw_pump: 'पंप',
+    tw_filter: 'फ़िल्टर',
+    tw_water: 'पोषक पानी, दोबारा इस्तेमाल',
     install_title: 'और हम इसे आपके लिए लगाते हैं',
     h1t: 'अपनी जगह के बारे में बताएँ',
     h2t: 'हम आपके लिए डिज़ाइन करते हैं',
@@ -340,6 +346,9 @@ const T = {
     tw2t: 'तळाशी असलेला पंप पाणी वर चढवतो',
     tw3t: 'पाणी मुळांमधून खाली झिरपते',
     tw4t: 'माती नाही. फक्त पाणी, पोषक घटक आणि सूर्यप्रकाश.',
+    tw_pump: 'पंप',
+    tw_filter: 'फिल्टर',
+    tw_water: 'पोषक पाणी, पुन्हा वापर',
     install_title: 'आणि आम्हीच ते बसवून देतो',
     h1t: 'तुमच्या जागेबद्दल सांगा',
     h2t: 'आम्ही तुमच्यासाठी डिझाइन करतो',
