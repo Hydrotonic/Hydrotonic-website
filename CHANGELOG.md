@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-11-06: Consulting shows who advises and a real case
+
+- Consulting now opens with a card on the founder: B.Sc. (Hons.) Agriculture from UAS Dharwad, 4 years of agriculture study, more than a year building towers and growing in them, and hands-on experience treating pests on live crops.
+- New field case: the owner's video of a Bihar hairy caterpillar, with how to spot it, manage it and keep it away. The video has no sound, plays only while on screen and has play controls.
+- The pest photo grid now has a heading, "More pests and diseases we have handled". All new text is in English, Kannada, Hindi and Marathi.
+
 ## 2026-11-06: Header that gets out of the way, tower that stays drawn
 
 - The header slides away while scrolling down and comes straight back on any scroll up, on desktop and phones. It is always shown at the top of the page, and ignores tiny movements so it never flickers.
