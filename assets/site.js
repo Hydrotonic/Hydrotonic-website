@@ -80,12 +80,32 @@ function renderTower(p) {
 }
 const seen = { leaves: [] };
 let ticking = false, lastP = -1;
+// Header: slides away while scrolling down, comes back on any scroll up, always shown at the top.
+// Small movements (under NAV_SLACK px) are ignored so it never flickers.
+const nav = document.querySelector('.nav'), NAV_SLACK = 8;
+let navY = scrollY;
+function onNav() {
+  const y = scrollY, d = y - navY;
+  if (y <= (nav ? nav.offsetHeight : 80)) { document.body.classList.remove('nav-hidden'); navY = y; return; }
+  if (Math.abs(d) < NAV_SLACK) return;
+  // Keep it on screen while the visitor is using it (keyboard focus or an open language list).
+  if (d > 0 && !(nav && nav.querySelector(':focus-visible'))) document.body.classList.add('nav-hidden');
+  else if (d < 0) document.body.classList.remove('nav-hidden');
+  navY = y;
+}
+if (nav) nav.addEventListener('focusin', () => { if (nav.querySelector(':focus-visible')) document.body.classList.remove('nav-hidden'); });
 function onScroll() {
   document.body.classList.toggle('scrolled', scrollY > 140);
+  onNav();
   if (reduced) return;
   // The drawing finishes one screen early; that last screen holds the finished tower before the page moves on.
+  // Once drawn it stays drawn when scrolling back up; it only starts over after a return to the very top.
   // Only touch the DOM when something actually changed or is on screen.
-  if (tower) { const r = tower.getBoundingClientRect(); const p = clamp(-r.top / (r.height - 2 * innerHeight)); if (p !== lastP) { lastP = p; renderTower(p); } }
+  if (tower) {
+    if (scrollY <= 0) lastP = -1;
+    const r = tower.getBoundingClientRect(), p = Math.max(clamp(-r.top / (r.height - 2 * innerHeight)), lastP);
+    if (p !== lastP) { lastP = p; renderTower(p); }
+  }
   if (steps) { const r = steps.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) steps.style.setProperty('--p', clamp((innerHeight * .75 - r.top) / r.height)); }
   if (band) { const r = band.parentElement.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) band.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px)`; }
 }
@@ -112,6 +132,8 @@ const T = {
     skip: 'ವಿಷಯಕ್ಕೆ ಹೋಗಿ',
     top_loc: 'ಬೆಳಗಾವಿ, ಕರ್ನಾಟಕ',
     nav_home: 'ಮುಖಪುಟ',
+    home_tip: 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ',
+    new_tab: '(ಹೊಸ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ತೆರೆಯುತ್ತದೆ)',
     home_top: 'ಅವಲೋಕನ',
     nav_tower: 'ಟವರ್',
     nav_products: 'ಉತ್ಪನ್ನಗಳು',
@@ -352,6 +374,8 @@ const T = {
     skip: 'सामग्री पर जाएँ',
     top_loc: 'बेलगावी, कर्नाटक',
     nav_home: 'होम',
+    home_tip: 'होम पेज पर वापस जाएँ',
+    new_tab: '(नए टैब में खुलता है)',
     home_top: 'अवलोकन',
     nav_tower: 'टावर',
     nav_products: 'उत्पाद',
@@ -592,6 +616,8 @@ const T = {
     skip: 'मुख्य मजकुराकडे जा',
     top_loc: 'बेळगावी, कर्नाटक',
     nav_home: 'मुखपृष्ठ',
+    home_tip: 'मुख्यपृष्ठावर परत जा',
+    new_tab: '(नवीन टॅबमध्ये उघडते)',
     home_top: 'आढावा',
     nav_tower: 'टॉवर',
     nav_products: 'उत्पादने',
