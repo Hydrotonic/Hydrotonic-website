@@ -2,6 +2,12 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-11-06: Microgreens and edible flowers gallery
+
+- Prices, Microgreens and edible flowers: four photos (green microgreens, radish and red amaranth with their roots, nasturtium flowers) and a list of what we can grow: radish, red amaranth, sunflower, pea shoots, mustard, broccoli, fenugreek (methi) and beetroot, plus nasturtium, marigold, pansy and viola, and butterfly pea. All in English, Kannada, Hindi and Marathi.
+- Links with a #section (like /prices.html#microgreens) now land on that section when the page opens. Before, the smooth scroll could stop partway down the page.
+- The Prices footer now credits Unsplash, since this section uses Unsplash photos.
+
 ## 2026-11-06: Calmer header, real product photos
 
 - Header: four links only (The Tower, Prices, Consulting, About) with more space between them, no divider or arrows, and the current page underlined. FAQ moved to the menu and footer. The full header now fits from 1020px wide again.
