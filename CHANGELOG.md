@@ -6,7 +6,7 @@ All notable changes to hydrotonic.org. Newest first.
 
 - Header: four links only (The Tower, Prices, Consulting, About) with more space between them, no divider or arrows, and the current page underlined. FAQ moved to the menu and footer. The full header now fits from 1020px wide again.
 - Phones: the second header row shows the same four links and stays on screen while scrolling, so Prices and Consulting are always one tap away.
-- "Everything you need to grow" now uses real photos: towers on the farm, the accessories set, tomatoes from the towers and a chilli seedling in a net pot. Each card opens its section on the Prices page.
+- "Everything you need to grow" now uses real images: clean renders of the tower grids, the accessories set, tomatoes from the towers and a dense microgreens close-up. Each card opens its section on the Prices page.
 
 ## 2026-11-06: Prices and Consulting pages
 
