@@ -556,6 +556,38 @@ html:has(.menu[open]) { overflow: hidden; }
 
 /* Consulting page */
 .consult { padding-top: 32px; }
+/* Consulting: who gives the advice, then a real case from the field. */
+.kicker { margin: 0 0 6px; color: var(--accent); font-size: .85rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.expert { display: grid; grid-template-columns: 96px 1fr; gap: 20px 28px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 32px; }
+.expert .avatar { width: 96px; height: 96px; }
+.expert h2 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); margin: 0 0 8px; }
+.expert .deg { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--strong); font-weight: 500; }
+.expert .deg .uas-badge { width: 30px; height: 30px; }
+.expert p { max-width: 62ch; }
+.ex-stats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 6px; }
+.ex-stats div { display: grid; align-content: start; gap: 4px; padding: 18px 20px; border-radius: 14px; background: var(--tag); }
+.ex-stats b { color: var(--strong); font-size: 1.6rem; font-weight: 600; line-height: 1.15; }
+.ex-stats span { color: var(--muted); font-size: .92rem; line-height: 1.45; }
+.case { display: grid; grid-template-columns: minmax(240px, 330px) 1fr; gap: 48px; align-items: center; margin-top: 64px; }
+.case-video { margin: 0; border-radius: var(--r); overflow: hidden; background: #0d1f30; }
+.case-video video { display: block; width: 100%; height: auto; aspect-ratio: 480 / 854; object-fit: cover; }
+.case h2 { margin: 0; }
+.case .sci { margin: 4px 0 22px; color: var(--muted); font-style: italic; }
+.case-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.case-steps li { display: grid; gap: 4px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.case-steps b { color: var(--accent); font-weight: 600; }
+.pest-title { margin: 64px 0 18px; }
+@media (max-width: 860px) {
+  .case { grid-template-columns: 1fr; gap: 28px; margin-top: 48px; }
+  .case-video { width: min(100%, 320px); margin: 0 auto; }
+  .pest-title { margin-top: 48px; }
+}
+@media (max-width: 700px) {
+  .expert { grid-template-columns: 1fr; gap: 14px; padding: 24px 20px; }
+  .expert .avatar { width: 72px; height: 72px; }
+  .ex-stats { grid-template-columns: 1fr; gap: 10px; }
+  .ex-stats div { padding: 14px 16px; }
+}
 .pest-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: repeat(2, 230px); gap: 14px; }
 .pest-grid figure { margin: 0; border-radius: var(--r); overflow: hidden; min-height: 0; }
 .pest-grid figure:first-child { grid-row: 1 / 3; }
