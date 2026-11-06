@@ -49,19 +49,28 @@ h3 { font-size: 1.12rem; line-height: 1.35; }
 .site-top { position: relative; z-index: 50; }
 .over .site-top { position: absolute; top: 0; left: 0; right: 0; }
 
-.nav { color: #fff; }
+.nav { color: #fff; position: fixed; top: 0; left: 0; right: 0; transition: transform .3s ease, background-color .3s ease; }
+/* Hide on scroll: script.js adds .nav-hidden while scrolling down and removes it on any scroll up or at the top. */
+.nav-hidden .nav { transform: translateY(-100%); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
 .page-sub .nav { background: var(--bg); color: var(--strong); border-bottom: 1px solid var(--line); }
 .brand { display: flex; flex: none; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; font-weight: 600; font-size: 1.12rem; letter-spacing: .01em; }
 /* The mark keeps its navy, green and blue, as on the banner, on a small light tile that works in both themes. */
-.brand img { height: 46px; width: auto; }
+.brand img { height: 46px; width: auto; transition: transform .2s ease; }
+.brand { position: relative; }
+.brand .tip { position: absolute; top: calc(100% + 4px); left: 0; display: flex; align-items: center; gap: 6px; padding: 6px 11px; border-radius: 8px; background: var(--strong); color: var(--bg); font-size: .78rem; font-weight: 500; letter-spacing: 0; white-space: nowrap; text-shadow: none; box-shadow: 0 6px 18px rgba(0, 0, 0, .22); opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .15s ease, transform .15s ease; }
+.brand .tip .ico { width: 14px; height: 14px; stroke-width: 2; }
+@media (hover: hover) { .nav .brand:hover img { transform: scale(1.06); } .nav .brand:hover .tip { opacity: 1; transform: none; } }
+.nav .brand:focus-visible .tip { opacity: 1; transform: none; }
+/* Text for screen readers only. */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 /* On dark surfaces the navy towers get a faint light halo so they stay visible without a box behind them. */
 :root[data-theme="dark"] .brand img, .over:not(.scrolled) .brand img, :root[data-theme="dark"] .menu .brand img { filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .9)) drop-shadow(0 0 6px rgba(255, 255, 255, .35)); }
 :root:not([data-theme="dark"]) .scrolled .nav .brand img, :root:not([data-theme="dark"]) .page-sub .nav .brand img, :root:not([data-theme="dark"]) .menu .brand img { filter: none; }
 footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .9)) drop-shadow(0 0 8px rgba(255, 255, 255, .3)); }
 .nav-links { display: flex; align-items: center; gap: clamp(26px, 3vw, 46px); }
 .nav-links a { white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; color: inherit; opacity: .85; font-size: .97rem; font-weight: 500; padding: 12px 0; }
-.nav-links a[aria-current="page"], .subnav nav a[aria-current="page"] { opacity: 1; font-weight: 600; box-shadow: inset 0 -2px 0 var(--accent); }
+.nav-links a[aria-current="page"], .subnav nav a[aria-current="page"] { opacity: 1; font-weight: 600; background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 2px no-repeat; }
 /* Sections of this page come first; links to other pages follow a divider and carry a small arrow. */
 .ico.go { width: .85em; height: .85em; stroke-width: 2.2; opacity: .8; }
 .nav-links a:hover { opacity: 1; color: var(--accent); }
@@ -76,7 +85,8 @@ footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5p
 @media (max-width: 1020px) {
   .nav-links, .nav .quote { display: none; }
   /* Phones keep language, theme and the menu in the header row; the quote button goes (the hero and the menu both offer contact). */
-  .nav .tools { gap: 6px; } .nav .tools .lang-select { width: 66px; padding: 4px 4px 4px 10px; font-size: .8rem; min-height: 40px; } .nav .tools .theme-btn { width: 40px; height: 40px; }
+  .nav .tools { gap: 6px; } .nav .tools .lang-select { width: 72px; padding: 4px 6px 4px 12px; font-size: .82rem; min-height: 44px; } .nav .tools .theme-btn { width: 44px; height: 44px; }
+  .nav .tools:has(.menu-btn) .theme-btn { display: none; }
   /* Pages without the menu (Privacy, 404) keep language and theme in the header. */
   .nav .tools:not(:has(.menu-btn)) .lang-select { display: inline-flex; } .nav .tools:not(:has(.menu-btn)) .theme-btn { display: grid; }
   .menu-btn { display: grid; }
@@ -87,10 +97,9 @@ footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5p
 }
 .quote { white-space: nowrap; }
 @media (max-width: 359px) { .nav .brand { font-size: 0; gap: 0; } }
-.scrolled .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--nav-solid); color: var(--strong); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); animation: drop .35s ease; }
+.scrolled .nav { background: var(--nav-solid); color: var(--strong); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .scrolled .nav .theme-btn, .scrolled .nav .menu-btn, .scrolled .nav .lang-select, .page-sub .nav .theme-btn, .page-sub .nav .lang-select { border-color: var(--line); }
 .scrolled .nav .lang-select, .page-sub .nav .lang-select { background: var(--surface); }
-@keyframes drop { from { transform: translateY(-100%); } to { transform: none; } }
 
 /* Full-screen mobile menu (native <dialog>) */
 .menu { overscroll-behavior: contain; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--bg); color: var(--ink); }
@@ -108,7 +117,9 @@ footer .foot-logo img { height: auto; width: 170px; filter: drop-shadow(0 0 1.5p
 .menu .menu-tools { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
 .menu .menu-tools .lang-select, .menu .menu-tools .theme-btn { border-color: var(--line); background: var(--surface); color: var(--ink); }
 .menu .menu-social { display: flex; gap: 18px; margin-top: auto; padding-top: 24px; }
-.menu .menu-social a { color: var(--ink); text-decoration: none; font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+.menu .menu-social a { color: var(--ink); text-decoration: none; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+.menu .menu-social { border-top: 1px solid var(--line); }
+.ico.ext { width: .8em; height: .8em; stroke-width: 2.2; opacity: .65; margin-left: -3px; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 0 40px; overflow: hidden; color: #fff; isolation: isolate; }
@@ -383,7 +394,7 @@ footer:not(:has(.cols)) { padding-top: 0; } footer:not(:has(.cols)) .bottom { ma
   html { scroll-behavior: auto; }
   .hero-bg { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .card, .card img, .btn, .tw-step, .menu[open], .scrolled .nav { transition: none; animation: none; }
+  .card, .card img, .btn, .tw-step, .menu[open], .nav, .brand img, .brand .tip { transition: none; animation: none; }
   .tower { height: auto; }
   .tower-stick { position: static; height: auto; padding: 72px 0; }
   .tw-steps { min-height: 0; display: grid; gap: 16px; }
@@ -455,16 +466,16 @@ html:has(.menu[open]) { overflow: hidden; }
   .nav .subnav { display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 44px; margin-top: 0; }
   .subnav nav { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
   .subnav nav::-webkit-scrollbar { display: none; }
-  .subnav nav a { flex: none; display: inline-flex; align-items: center; gap: 4px; color: inherit; text-decoration: none; font-size: .88rem; font-weight: 500; min-height: 40px; opacity: .92; }
+  .subnav nav a { flex: none; display: inline-flex; align-items: center; gap: 4px; color: inherit; text-decoration: none; font-size: .88rem; font-weight: 500; min-height: 44px; opacity: .92; }
   /* a.page shares a class name with the simple-page container (.page { padding }), so pin these links down. */
-  .nav .subnav nav a { display: inline-flex; padding: 0; min-height: 40px; }
+  .nav .subnav nav a { display: inline-flex; justify-content: center; padding: 0; min-height: 44px; min-width: 44px; }
   .subnav .tools { display: none; }
   .subnav .lang-select { display: inline-flex; min-height: 38px; width: 78px; padding: 4px 6px 4px 10px; font-size: .78rem; }
   .subnav nav { gap: 16px; }
   .subnav .theme-btn { display: grid; width: 38px; height: 38px; }
   .over .subnav { text-shadow: 0 1px 8px rgba(0, 0, 0, .55); }
   .hero { padding-top: 160px; } .page-hero { padding-top: 170px; }
-  .page-sub .site-top { min-height: calc(107px + env(safe-area-inset-top)); }
+  .page-sub .site-top { min-height: calc(112px + env(safe-area-inset-top)); }
 }
 
 /* ---------- Burger menu: Home opens a smaller list of the homepage sections ---------- */

@@ -2,6 +2,15 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-11-06: Header that gets out of the way, tower that stays drawn
+
+- The header slides away while scrolling down and comes straight back on any scroll up, on desktop and phones. It is always shown at the top of the page, and ignores tiny movements so it never flickers.
+- The logo is clearly the home button: on hover it lifts slightly and shows "Back to home" with a house icon.
+- Menu links that leave the site (WhatsApp, Instagram, LinkedIn, Facebook) show a small ↗ and sit below a thin divider; pages on this site show a plain →. Screen readers hear "opens in a new tab".
+- Phones: a cleaner first row (logo, language, menu; the theme switch is in the menu) and every header control is at least 44px. Checked at 360, 390 and 430px, including Kannada.
+- The tower drawing in "02 · The tower" no longer rewinds when scrolling back up. It replays only after returning to the very top.
+- Fixed a stray thin line next to the current page's underlined link.
+
 ## 2026-11-06: Microgreens and edible flowers gallery
 
 - Prices, Microgreens and edible flowers: four photos (green microgreens, radish and red amaranth with their roots, nasturtium flowers) and a list of what we can grow: radish, red amaranth, sunflower, pea shoots, mustard, broccoli, fenugreek (methi) and beetroot, plus nasturtium, marigold, pansy and viola, and butterfly pea. All in English, Kannada, Hindi and Marathi.
