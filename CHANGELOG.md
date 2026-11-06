@@ -2,6 +2,15 @@
 
 All notable changes to hydrotonic.org. Newest first.
 
+## 2026-11-06: Prices and Consulting pages
+
+- New Prices page (`prices.html`) with the catalog's prices: 1, 2 and 4 tower grids (₹12,999, ₹17,999, ₹25,999, with cost per planting site), what every grid includes, tower specs, accessories (nutrient, pump, cocopeat, water filter, pipes), fresh produce (buy as you go or weekly supply) and microgreens.
+- New Consulting page (`consulting.html`): what we deal with, online or on-site visits, fees and the districts we cover, with the owner's own pest and disease photos.
+- Prices and Consulting sit in the header, the menu and the footer on every page. The header now switches to the phone layout below 1180px so the longer link row never overflows.
+- About: a "Who we serve" list and six new farm photos in the gallery (twelve in all).
+- Home: a "See prices" button under the products. The FAQ price answer now quotes the grid prices and links to the Prices page.
+- All new text is in Kannada, Hindi and Marathi (needs a native speaker's review).
+
 ## 2026-10-28: No install prompt
 
 - Phones no longer offer to install the site as an app. The manifest's `display` is now `browser`, so Chrome stops treating the site as an installable app (that prompt, and the "downloading" step that followed it, worried visitors). Home-screen icons and the browser bar colour are unchanged.
